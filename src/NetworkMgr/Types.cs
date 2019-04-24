@@ -22,7 +22,7 @@ namespace NetworkManager
     
     public class ChannelData : IDisposable
     {
-        public bool Activate { get; protected set; }
+        public bool Activate;
         public HashSet<ConnectChangeEventHandler> EventHandlers { get; protected set; }
 
         public ChannelData() => EventHandlers = new HashSet<ConnectChangeEventHandler>();
