@@ -5,23 +5,17 @@ namespace SupportPackage
 {
     public class LiquidCoolingSystem : StateMachineComponent<LiquidCoolingSystem.StatesInstance>
     {
-        public static readonly Operational.Flag CoolantOutputPipeEmpty = new Operational.Flag(nameof(CoolantOutputPipeEmpty), Operational.Flag.Type.Requirement);
-        
         public float MinCoolantMass = 5f;
         public float ThermalFudge = 0.8f;
-        // 경고: 이 값이 너무 크면 너무 빨리 냉각되어, 게임이 튕길 수도 있습니다.
         public float CoolingPerSecond = 0.5f;
         public float LowTemperature = 274f;
-        // 냉매 태그 입니다. 보통 GameTags.Liquid로 합니다.
         public Tag CoolantTag;
         [MyCmpReq]
         protected Operational operational;
         [MyCmpReq]
         protected PrimaryElement primary; 
-        // 중요: input storage 이며, 냉매가 들어있는 Storage 여야하며, 냉매 이외에 다른게 있으면 버그가 납니다.
         [SerializeField]
         public Storage storage;
-        // 중요: output storage 이며, 반드시 out 전용이 되어야 합니다.
         [SerializeField]
         public Storage OutStorage;
 
@@ -47,10 +41,8 @@ namespace SupportPackage
             }
 
             compo = plist[0].GetComponent<PrimaryElement>();
-
             fmass = compo.Mass * compo.Element.specificHeatCapacity / total;
 
-            Debug.Log($"RTMP: {primary.Temperature} TOTLA: {total} FORCH: {forchange}");
             compo.Temperature += GameUtil.CalculateTemperatureChange(compo.Element.specificHeatCapacity, compo.Mass, -forchange * fmass * ThermalFudge); ;
             primary.Temperature -= CoolingPerSecond;
 
