@@ -67,4 +67,14 @@ namespace NewWirelessAutomatic
                 __result = typeof(SignalReceiver);
         }
     }
+    
+    [HarmonyPatch(typeof(IntSliderSideScreen), "OnSpawn")]
+    public class INTSS_ONSPAWN_PATCH_01
+    {
+        public static void Postfix(IntSliderSideScreen __instance)
+        {
+            foreach (SliderSet x in __instance.sliderSets)
+                x.numberInput.field.characterLimit = 7;
+        }
+    }
 }
