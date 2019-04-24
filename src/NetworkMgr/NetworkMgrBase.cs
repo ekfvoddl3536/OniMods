@@ -49,7 +49,9 @@ namespace NetworkManager
         public virtual void SignalEmit(int ch, bool ison)
         {
             if (!channels.ContainsKey(ch)) return;
-
+            
+            channels[ch].Activate = ison;
+            
             foreach (ConnectChangeEventHandler x in channels[ch].EventHandlers)
                 x.Invoke(this, ison);
         }
