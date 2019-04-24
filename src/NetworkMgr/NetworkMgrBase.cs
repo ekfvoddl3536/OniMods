@@ -14,14 +14,9 @@ namespace NetworkManager
 
     public class ChannelNetworkMgrBase : NetworkMgrBase<IChannelNetworkComponent>
     {
-        protected Dictionary<int, HashSet<ConnectChangeEventHandler>> channels;
-        protected Dictionary<int, bool> onChannels;
+        protected Dictionary<int, ChannelData> channels;
 
-        public ChannelNetworkMgrBase()
-        {
-            channels = new Dictionary<int, HashSet<ConnectChangeEventHandler>>();
-            onChannels = new Dictionary<int, bool>();
-        }
+        public ChannelNetworkMgrBase() => channels = new Dictionary<int, ChannelData>();
 
         public override bool IsConnected(IChannelNetworkComponent st, IChannelNetworkComponent ed) => st.GetChannel == ed.GetChannel;
 
@@ -31,9 +26,9 @@ namespace NetworkManager
             ConnectChangeEventHandler hnd = st.GetEventHandler;
 
             if (!channels.ContainsKey(ch))
-                channels.Add(ch, new HashSet<ConnectChangeEventHandler>());
+                channels.Add(ch, new ChannelData());
 
-            channels[ch].Add(hnd);
+            channels[ch].EventHandlers.Add(hnd);
         }
 
         public override void OnDisconnect(IChannelNetworkComponent st)
@@ -42,7 +37,7 @@ namespace NetworkManager
             ConnectChangeEventHandler hnd = st.GetEventHandler;
 
             if (channels.ContainsKey(ch) && hnd != null)
-                channels[ch].Remove(hnd);
+                channels[ch].EventHandlers.Remove(hnd);
         }
 
         public virtual void SetSignalEmit(IChannelNetworkComponent st)
@@ -55,23 +50,18 @@ namespace NetworkManager
         {
             if (!channels.ContainsKey(ch)) return;
 
-            if (!onChannels.ContainsKey(ch)) onChannels.Add(ch, ison);
-            else onChannels[ch] = ison;
-
-            // Parallel.ForEach(channels[ch], option, x => x.Invoke(this, ison));
-            foreach (ConnectChangeEventHandler x in channels[ch])
+            foreach (ConnectChangeEventHandler x in channels[ch].EventHandlers)
                 x.Invoke(this, ison);
         }
 
         public virtual void Reset()
         {
-            onChannels.Clear();
-            foreach (KeyValuePair<int, HashSet<ConnectChangeEventHandler>> x in channels)
+            foreach (KeyValuePair<int, ChannelData> x in channels)
                 x.Value.Clear();
             channels.Clear();
             GC.Collect(0, GCCollectionMode.Forced);
         }
 
-        public virtual bool IsChannelOn(int ch) => onChannels.TryGetValue(ch, out bool res) ? res : false;
+        public virtual bool IsChannelOn(int ch) => channels.TryGetValue(ch, out ChannelData res) ? res.Activate : false;
     }
 }
