@@ -19,4 +19,22 @@ namespace NetworkManager
         bool GetSignal { get; }
         ConnectChangeEventHandler GetEventHandler { get; }
     }
+    
+    public class ChannelData : IDisposable
+    {
+        public bool Activate { get; protected set; }
+        public HashSet<ConnectChangeEventHandler> EventHandlers { get; protected set; }
+
+        public ChannelData() => EventHandlers = new HashSet<ConnectChangeEventHandler>();
+
+        public virtual void Clear()
+        {
+            EventHandlers.Clear();
+            GC.Collect(0, GCCollectionMode.Forced);
+        }
+
+        public static implicit operator HashSet<ConnectChangeEventHandler>(ChannelData data) => data.EventHandlers;
+
+        public void Dispose() => Clear();
+    }
 }
