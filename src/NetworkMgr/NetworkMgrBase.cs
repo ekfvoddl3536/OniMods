@@ -14,6 +14,7 @@ namespace NetworkManager
 
     public class ChannelNetworkMgrBase : NetworkMgrBase<IChannelNetworkComponent>
     {
+        protected const int SpeicalChannelStart = 80_000;
         protected Dictionary<int, ChannelData> channels;
 
         public ChannelNetworkMgrBase() => channels = new Dictionary<int, ChannelData>();
@@ -26,9 +27,9 @@ namespace NetworkManager
             ConnectChangeEventHandler hnd = st.GetEventHandler;
 
             if (!channels.ContainsKey(ch))
-                channels.Add(ch, new ChannelData());
+                CreateChannel(ch);
 
-            channels[ch].EventHandlers.Add(hnd);
+            channels[ch].EventHandlers += hnd;
         }
 
         public override void OnDisconnect(IChannelNetworkComponent st)
@@ -37,7 +38,25 @@ namespace NetworkManager
             ConnectChangeEventHandler hnd = st.GetEventHandler;
 
             if (channels.ContainsKey(ch) && hnd != null)
-                channels[ch].EventHandlers.Remove(hnd);
+                channels[ch].EventHandlers -= hnd;
+        }
+
+        public virtual void OnEmitterConnect(IChannelNetworkComponentEX st)
+        {
+            int ch = st.GetChannel;
+
+            if (!channels.ContainsKey(ch))
+                CreateChannel(ch);
+
+            channels[ch].Subscribe(this, st);
+        }
+
+        public virtual void OnEmitterDisconenct(IChannelNetworkComponentEX st)
+        {
+            int ch = st.GetChannel;
+
+            if (channels.ContainsKey(ch))
+                channels[ch].Unsubscribe(this, st);
         }
 
         public virtual void SetSignalEmit(IChannelNetworkComponent st)
@@ -48,12 +67,10 @@ namespace NetworkManager
 
         public virtual void SignalEmit(int ch, bool ison)
         {
-            if (!channels.ContainsKey(ch)) return;
-            
-            channels[ch].Activate = ison;
-            
-            foreach (ConnectChangeEventHandler x in channels[ch].EventHandlers)
-                x.Invoke(this, ison);
+            if (!channels.ContainsKey(ch) || channels[ch].IsDoNotNeedUpdate(ison)) return;
+
+            channels[ch].UpdateActivate(ison);
+            channels[ch].InvokeEvent(this, ison);
         }
 
         public virtual void Reset()
@@ -64,6 +81,9 @@ namespace NetworkManager
             GC.Collect(0, GCCollectionMode.Forced);
         }
 
-        public virtual bool IsChannelOn(int ch) => channels.TryGetValue(ch, out ChannelData res) ? res.Activate : false;
+        public virtual bool IsChannelOn(int ch) => channels.TryGetValue(ch, out ChannelData res) ? res.IsActivate() : false;
+
+        protected virtual void CreateChannel(int ch) =>
+            channels.Add(ch, ch < 80_001 ? new ChannelData() : new OrChannelData());
     }
 }
