@@ -14,7 +14,6 @@ namespace NetworkManager
 
     public class ChannelNetworkMgrBase : NetworkMgrBase<IChannelNetworkComponent>
     {
-        protected const int SpeicalChannelStart = 80_000;
         protected Dictionary<int, ChannelData> channels;
 
         public ChannelNetworkMgrBase() => channels = new Dictionary<int, ChannelData>();
