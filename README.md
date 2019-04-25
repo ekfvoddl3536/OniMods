@@ -47,6 +47,8 @@ git clone https://github.com/ekfvoddl3536/OniMods.git
 **라이선스 원문은 [여기][license]**서 확인할 수 있습니다.  
 **라이선스에 대한 한국어 정보는 [여기][nwk]**에서 확인하실 수 있습니다
 
+**또한 파일별로 라이선스가 다르므로 참고하시길 바랍니다**
+
 
   
 [fancafelink]: https://cafe.naver.com/oniforum  
