@@ -28,10 +28,8 @@ namespace SupportPackage
 {
     public class LiquidCoolingSystem : StateMachineComponent<LiquidCoolingSystem.StatesInstance>
     {
-        public float MinCoolantMass = 5f;
+        public float MinCoolantMass = 1f;
         public float ThermalFudge = 0.8f;
-        public float CoolingPerSecond = 0.5f;
-        public float LowTemperature = 274f;
         // 경고: 이 값이 너무 크면 너무 빨리 냉각되어, 게임이 튕길 수도 있습니다.
         public float CoolingPerSecond = 0.5f;
         public float LowTemperature = 274f;
@@ -41,11 +39,9 @@ namespace SupportPackage
         protected Operational operational;
         [MyCmpReq]
         protected PrimaryElement primary; 
-        // 중요: input storage 이며, 냉매가 들어있는 Storage 여야하며, 냉매 이외에 다른게 있으면 버그가 납니다.
-        [SerializeField]
+        // 중요: input storage 이며, 냉매가 들어있는 Storage 입니다.
         public Storage storage;
         // 중요: output storage 이며, 반드시 out 전용이 되어야 합니다.
-        [SerializeField]
         public Storage OutStorage;
 
         protected override void OnSpawn() => smi.StartSM();
