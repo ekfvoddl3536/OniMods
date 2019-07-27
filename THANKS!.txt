@@ -1,15 +1,15 @@
 ?n #### 개발에 도움을 주신분들 ####
 ?n #### 특별 감사 후원자 명단 ####
-<e,>
+<e>
 !t5000
 </>
 ?n #### 후원자 명단 ####
-<e,>
-	kag0330,
-	saycyber,
-	servanos,
-	스즈,
-	SASSYIDLE,
-	백*선,
-	김*서
+<e>
+kag0330
+saycyber
+servanos
+스즈
+SASSYIDLE
+백*선
+김*서
 </>
