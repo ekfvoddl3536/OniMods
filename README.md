@@ -59,3 +59,4 @@ git clone https://github.com/ekfvoddl3536/OniMods.git
 [rule1]: https://github.com/ekfvoddl3536/OniMods/blob/master/CONTRIBUTING.md
 [gplwiki]: https://ko.wikipedia.org/wiki/GNU_%EC%9D%BC%EB%B0%98_%EA%B3%B5%EC%A4%91_%EC%82%AC%EC%9A%A9_%ED%97%88%EA%B0%80%EC%84%9C
 [nwk]: https://namu.wiki/w/GNU%20%EC%9D%BC%EB%B0%98%20%EA%B3%B5%EC%A4%91%20%EC%82%AC%EC%9A%A9%20%ED%97%88%EA%B0%80%EC%84%9C
+[bap]: https://www.patreon.com/join/supercomic
