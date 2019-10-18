@@ -2,6 +2,7 @@
 ?n #### 특별 감사 후원자 명단 ####
 <e>
 !t5000
+servanos
 스즈
 김*태
 김*영
@@ -11,7 +12,6 @@
 Kalihell
 kag0330
 saycyber
-servanos
 SASSYIDLE
 백*선
 김*서
