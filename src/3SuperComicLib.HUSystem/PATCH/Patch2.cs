@@ -69,39 +69,6 @@ namespace SuperComicLib.HUSystem
         }
     }
 
-    // [HarmonyPatch(typeof(KAnimGraphTileVisualizer), "get_ConnectionManager")]
-    // public class PATCH_004
-    // {
-    //     public static bool Prefix(ref IUtilityNetworkMgr __result, KAnimGraphTileVisualizer __instance)
-    //     {
-    //         switch (__instance.connectionSource)
-    //         {
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Gas:
-    //                 __result = Game.Instance.gasConduitSystem;
-    //                 break;
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Liquid:
-    //                 __result = Game.Instance.liquidConduitSystem;
-    //                 break;
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Electrical:
-    //                 __result = Game.Instance.electricalConduitSystem;
-    //                 break;
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Logic:
-    //                 __result = Game.Instance.logicCircuitSystem;
-    //                 break;
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Tube:
-    //                 __result = Game.Instance.travelTubeSystem;
-    //                 break;
-    //             case KAnimGraphTileVisualizer.ConnectionSource.Solid:
-    //                 __result = Game.Instance.solidConduitSystem;
-    //                 break;
-    //             default:
-    //                 __result = hupipeSystem;
-    //                 break;
-    //         }
-    //         return false;
-    //     }
-    // }
-
     [HarmonyPatch(typeof(TemplateLoader), nameof(TemplateLoader.PlaceUtilityConnection))]
     public class PATCH4
     {
