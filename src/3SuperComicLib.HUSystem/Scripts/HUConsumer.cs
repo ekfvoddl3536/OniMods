@@ -57,10 +57,6 @@ namespace SuperComicLib.HUSystem
         public virtual List<Descriptor> GetDescriptors(BuildingDef def) => null;
         public virtual int ConsumedHU(int HUavailable, float dt)
         {
-            // 1. 지금 hu는 humin보다 같거나 큼.
-            // 2. humax 보다 작고, humin 보다는 큰 값 사이에서 최대로 먹을 수 있는 hu가 필요함
-            // math.min (humax, humin + (huav - humin));
-
             IsHeated = true;
             return OnConsumedHU(Math.Min(HUMax, HUMin + (HUavailable - HUMin)), dt);
         }
