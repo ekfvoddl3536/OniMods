@@ -25,7 +25,7 @@ namespace SuperComicLib.HUSystem
     [HarmonyPatch(typeof(BuildingCellVisualizer), nameof(BuildingCellVisualizer.DrawIcons))]
     public class P4
     {
-        private static FieldInfo oi, ii;
+        private static FieldInfo oi, ii, building;
         private static MethodInfo draw;
         private delegate void Handler(int cell, Sprite icon_img, ref GameObject visualizerObj, Color tint);
         public static bool Prepare()
@@ -34,6 +34,7 @@ namespace SuperComicLib.HUSystem
             BindingFlags f = BindingFlags.NonPublic | BindingFlags.Instance;
             oi = t.GetField("outputVisualizer", f);
             ii = t.GetField("inputVisualizer", f);
+            building = t.GetField("building", f);
             draw = t.GetMethod("DrawUtilityIcon", f, null, new[] { typeof(int), typeof(Sprite), typeof(GameObject).MakeByRefType(), typeof(Color) }, null);
             return true;
         }
@@ -42,19 +43,23 @@ namespace SuperComicLib.HUSystem
         {
             if (mode == HUPipeOverlay.ID)
             {
-                Handler func = (Handler)Delegate.CreateDelegate(typeof(Handler), __instance, draw);
-                BuildingCellVisualizerResources resource = BuildingCellVisualizerResources.Instance();
-                if (__instance.GetComponent<IHUConsumer>() is IHUConsumer consumer)
+                Building bd = (Building)building.GetValue(__instance);
+                if (bd.Def is HUBuildingDef def)
                 {
-                    GameObject op = null;
-                    func.Invoke(consumer.HUCell, resource.liquidInputIcon, ref op, resource.liquidIOColours.input.connected);
-                    ii.SetValue(__instance, op);
-                }
-                if (__instance.GetComponent<IHUGenerator>() is IHUGenerator generator)
-                {
-                    GameObject op = null;
-                    func.Invoke(generator.HUCell, resource.liquidOutputIcon, ref op, resource.liquidIOColours.output.connected);
-                    oi.SetValue(__instance, op);
+                    Handler func = (Handler)Delegate.CreateDelegate(typeof(Handler), __instance, draw);
+                    BuildingCellVisualizerResources resource = BuildingCellVisualizerResources.Instance();
+                    if ((def.hutypes & HUPipeTypes.InputOnly) != 0)
+                    {
+                        GameObject op = null;
+                        func.Invoke(bd.GetRotatedOffsetCell(def.huInputOffset), resource.liquidInputIcon, ref op, resource.liquidIOColours.input.connected);
+                        ii.SetValue(__instance, op);
+                    }
+                    if ((def.hutypes & HUPipeTypes.OutputOnly) != 0)
+                    {
+                        GameObject op = null;
+                        func.Invoke(bd.GetRotatedOffsetCell(def.huOutputOffset), resource.liquidOutputIcon, ref op, resource.liquidIOColours.output.connected);
+                        oi.SetValue(__instance, op);
+                    }
                 }
                 return false;
             }
