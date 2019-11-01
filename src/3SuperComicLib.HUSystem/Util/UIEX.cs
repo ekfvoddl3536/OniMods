@@ -1,4 +1,4 @@
-﻿namespace SuperComicLib.HUSystem
+namespace SuperComicLib.HUSystem
 {
     using static STRINGS.UI;
     public static class UIEX
