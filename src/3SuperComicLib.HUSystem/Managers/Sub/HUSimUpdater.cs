@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace SuperComicLib.HUSystem
 {
     public static class HUSimUpdater
     {
-        // 이벤트 안쓰겠음, 이벤트는 내가 알기로 ThreadSafe 하지 않음
         private static readonly HashSet<IHUSim200ms> Items = new HashSet<IHUSim200ms>();
 
         public static void Clear() => Items.Clear();
