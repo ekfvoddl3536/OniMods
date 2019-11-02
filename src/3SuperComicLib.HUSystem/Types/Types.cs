@@ -31,7 +31,6 @@ namespace SuperComicLib.HUSystem
         int HUMax { get; }
         int HUMin { get; }
 
-        void SetConnectionState(bool connected);
         int ConsumedHU(int HUavailable, float dt);
     }
 }
