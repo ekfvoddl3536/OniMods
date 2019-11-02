@@ -58,7 +58,7 @@ namespace SuperComicLib.HUSystem
         public virtual int ConsumedHU(int HUavailable, float dt)
         {
             IsHeated = true;
-            return OnConsumedHU(Math.Min(HUMax, HUMin + (HUavailable - HUMin)), dt);
+            return OnConsumedHU(Math.Min(HUMax, HUavailable), dt);
         }
 
         protected virtual int OnConsumedHU(int hu, float dt) => hu;
