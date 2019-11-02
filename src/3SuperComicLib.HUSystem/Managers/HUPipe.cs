@@ -20,6 +20,13 @@ namespace SuperComicLib.HUSystem
             hupipeSystem.AddToNetworks(HUCell, this, false);
             Connect();
         }
+        
+        // 까먹고 추가안했던거..
+        protected override void OnCleanUp()
+        {
+            hupipeSystem.RemoveFromNetworks(HUCell, this, false);
+            Disconnect();
+        }
 
         public bool Connect()
         {
