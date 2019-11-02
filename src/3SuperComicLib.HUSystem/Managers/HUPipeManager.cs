@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace SuperComicLib.HUSystem
 {
@@ -58,23 +58,18 @@ namespace SuperComicLib.HUSystem
                 i.totalConsumedHU = 0;
                 int availableHUs = 0;
 
-                for (int idx = 0; idx < infos[x].generators.Count; idx++)
-                    availableHUs += infos[x].generators[idx].GenerateHeat(dt);
+                for (int idx = 0; idx < i.generators.Count; idx++)
+                    availableHUs += i.generators[idx].GenerateHeat(dt);
 
-                if (availableHUs > 0)
-                    for (int a = 0; a < infos[x].consumers.Count; a++)
+                for (int a = 0; a < i.consumers.Count; a++)
+                    if (availableHUs >= i.consumers[a].HUMin)
                     {
-                        infos[x].consumers[a].SetConnectionState(true);
-                        if (availableHUs >= infos[x].consumers[a].HUMin)
-                        {
-                            int temp = infos[x].consumers[a].ConsumedHU(availableHUs, dt);
-                            infos[x].totalConsumedHU += temp;
-                            availableHUs -= temp;
-                        }
+                        int temp = i.consumers[a].ConsumedHU(availableHUs, dt);
+                        i.totalConsumedHU += temp;
+                        availableHUs -= temp;
                     }
-                else
-                    for (int a = 0; a < infos[x].consumers.Count; a++)
-                        infos[x].consumers[a].SetConnectionState(false);
+                    else
+                        i.consumers[a].ConsumedHU(0, 0);
             }
         }
 
