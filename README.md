@@ -47,9 +47,8 @@ git clone https://github.com/ekfvoddl3536/OniMods.git
 
 라이선스
 =====================
-본 프로젝트는 **[GNU 일반 공중 사용 허가서 v3][gplwiki]**를 적용하고 있습니다.  
+본 프로젝트는 MIT 라이선스를 적용하고 있습니다.  
 **라이선스 원문은 [여기][license]**서 확인할 수 있습니다.  
-**라이선스에 대한 한국어 정보는 [여기][nwk]**에서 확인하실 수 있습니다
 
 **또한 파일별로 라이선스가 다르므로 참고하시길 바랍니다**
 
@@ -61,6 +60,5 @@ git clone https://github.com/ekfvoddl3536/OniMods.git
 [feedback]: https://github.com/ekfvoddl3536/OniMods/issues/new/choose
 [license]: https://github.com/ekfvoddl3536/OniMods/blob/master/LICENSE
 [rule1]: https://github.com/ekfvoddl3536/OniMods/blob/master/CONTRIBUTING.md
-[gplwiki]: https://ko.wikipedia.org/wiki/GNU_%EC%9D%BC%EB%B0%98_%EA%B3%B5%EC%A4%91_%EC%82%AC%EC%9A%A9_%ED%97%88%EA%B0%80%EC%84%9C
 [nwk]: https://namu.wiki/w/GNU%20%EC%9D%BC%EB%B0%98%20%EA%B3%B5%EC%A4%91%20%EC%82%AC%EC%9A%A9%20%ED%97%88%EA%B0%80%EC%84%9C
 [bap]: https://www.patreon.com/join/supercomic
