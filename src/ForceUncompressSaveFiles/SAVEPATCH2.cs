@@ -12,7 +12,6 @@ namespace AsynchronousAutosave
     {
         private static IEnumerator<System.Action> TestMethod(int cycle, int lives, string bn, bool sandbox, string actpath, SaveManager manager, SaveGame.GameInfo info, string filename, bool autosave, bool updatepointer)
         {
-            // Thread.Sleep(5000);
             Manager.Clear();
             if (ThreadedHttps<KleiMetrics>.Instance != null && ThreadedHttps<KleiMetrics>.Instance.enabled)
             {
@@ -164,6 +163,7 @@ namespace AsynchronousAutosave
             }
             if (updatepointer)
                 SaveLoader.SetActiveSaveFilePath(filename);
+            // 아래 주석을 제거해도 좋지만, 짧은 프레임 드랍이 발생합니다.
             // Game.Instance.timelapser.SaveColonyPreview(filename);
             DebugUtil.LogArgs("Saved to", "[" + filename + "]");
             // GC.Collect(0, GCCollectionMode.Optimized);
