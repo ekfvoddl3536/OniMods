@@ -27,6 +27,7 @@ namespace SuperComicLib.Threading
                     action.Invoke();
                     revent.Set();
                 }
+            revent.Close();
             yield break;
         }
 

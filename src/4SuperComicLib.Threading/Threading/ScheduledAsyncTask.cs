@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace SuperComicLib.Threading
 {
-    public sealed class ScheduledAsyncTask
+    public sealed class ScheduledAsyncTask : IDisposable
     {
         private bool workThreadBlocking;
         private bool working;
@@ -26,6 +26,7 @@ namespace SuperComicLib.Threading
                     action.Invoke();
                     revent.Set();
                 }
+            Dispose();
             yield break;
         }
 
@@ -52,6 +53,13 @@ namespace SuperComicLib.Threading
                 }
             }
             working = false;
+        }
+
+        public void Dispose()
+        {
+            revent.Close();
+            targets.Clear();
+            targets = null;
         }
     }
 }
