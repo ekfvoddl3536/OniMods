@@ -14,14 +14,6 @@ namespace AsynchronousAutosave
 
         public static string GetString(this NativeArray<char> vs) => new string(vs.ToArray());
 
-        // public unsafe static byte[] GetBytes(this string str)
-        // {
-        //     byte[] arr = new byte[str.Length * 2];
-        //     fixed (void* ptr = str)
-        //         Marshal.Copy(new IntPtr(ptr), arr, 0, arr.Length);
-        //     return arr;
-        // }
-
         public static void WriteString(this MemoryStream ms, string str) => WriteString(ms, str, Encoding.UTF8);
 
         public static void WriteString(this MemoryStream ms, string str, Encoding encoding)
@@ -32,8 +24,6 @@ namespace AsynchronousAutosave
         }
 
         public static void WriteInt32(this MemoryStream ms, int val) => ms.Write(BitConverter.GetBytes(val), 0, isize);
-
-        // public static void WriteUInt32(this MemoryStream ms, uint val) => ms.Write(BitConverter.GetBytes(val), 0, isize);
 
         public static void WriteBytes(this MemoryStream ms, byte[] vs)
         {
@@ -48,8 +38,6 @@ namespace AsynchronousAutosave
         public static byte[] GetBytesSMART(this IReader reader) => reader.ReadBytes(BitConverter.ToInt32(reader.ReadBytes(isize), 0));
 
         public static int GetInt32SMART(this IReader reader) => BitConverter.ToInt32(reader.ReadBytes(isize), 0);
-
-        // public static bool GetBooleanSMART(this IReader reader) => reader.ReadByte() == byte.MaxValue;
 
         public static long GetInt64SMART(this IReader reader) => BitConverter.ToInt64(reader.ReadBytes(usize), 0);
 
