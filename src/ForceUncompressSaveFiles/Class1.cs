@@ -225,15 +225,6 @@ namespace AsynchronousAutosave
         public int HeightInCells;
         public byte[] Sim, GridVisible, GridSpawnable, GridDamage, Camera;
         public string worldID;
-        // public List<ModInfo> requiredMods;
         public List<KMod.Label> active_mods;
-    }
-
-    public sealed class CoroutineState
-    {
-        public SaveLoader instance;
-        public string filename;
-        public bool autosave;
-        public bool updateSavePointer;
     }
 }
