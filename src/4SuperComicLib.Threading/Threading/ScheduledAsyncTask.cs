@@ -25,6 +25,7 @@ namespace SuperComicLib.Threading
                     workThreadBlocking = true;
                     action.Invoke();
                     revent.Set();
+                    revent.Reset(); // 생각할 수록 화나네 ㅋㅋ 아놔 ㅋㅋ
                 }
             Dispose();
             yield break;
