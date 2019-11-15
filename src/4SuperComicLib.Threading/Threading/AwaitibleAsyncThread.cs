@@ -26,6 +26,7 @@ namespace SuperComicLib.Threading
                     skipframe = true;
                     action.Invoke();
                     revent.Set();
+                    revent.Reset(); // 이걸 빼먹네
                 }
             revent.Close();
             yield break;
