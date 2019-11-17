@@ -11,37 +11,19 @@ namespace SuperComicLib.Threading
         private QueuedAction queuedAct;
 
         // 대기하거나 안하거나 할 수 있도록
-        // 또는 ContinueWith을 사용하기 위해
+        // ContinueWith은 반환이 있는경우에만 쓸모가 있을것 같아서 삭제하였습니다
         public struct Awaiter
         {
             private ManualResetEvent mpe;
-            private bool autoclosing;
 
-            internal Awaiter(ManualResetEvent mpe)
-            {
-                this.mpe = mpe;
-                autoclosing = true;
-            }
+            internal Awaiter(ManualResetEvent mpe) => this.mpe = mpe;
 
             public void Wait() => mpe.WaitOne();
             
-            // 굉장히 위험하기 때문에, 경우에 따라서는 이 코드를 사용하지 못하도록 하세요
-            public void Close() => mpe.Close();
-
-            public Awaiter ContinueWith(Action<Awaiter> action)
-            {
-                autoclosing = false;
-                mpe.WaitOne();
-                mpe.Reset();
-                action.Invoke(this);
-                return new Awaiter(mpe);
-            }
-
             internal void Complete()
             {
                 mpe.Set();
-                if (autoclosing)
-                    mpe.Close();
+                mpe.Close();
             }
         }
 
