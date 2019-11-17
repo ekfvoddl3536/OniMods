@@ -24,6 +24,9 @@ namespace SuperComicLib.Threading
             }
 
             public void Wait() => mpe.WaitOne();
+            
+            // 굉장히 위험하기 때문에, 경우에 따라서는 이 코드를 사용하지 못하도록 하세요
+            public void Close() => mpe.Close();
 
             public Awaiter ContinueWith(Action<Awaiter> action)
             {
