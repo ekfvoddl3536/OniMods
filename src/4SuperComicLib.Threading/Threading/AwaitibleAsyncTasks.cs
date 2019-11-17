@@ -17,14 +17,15 @@ namespace SuperComicLib.Threading
             private ManualResetEvent mpe;
 
             internal Awaiter(ManualResetEvent mpe) => this.mpe = mpe;
-
-            public void Wait() => mpe.WaitOne();
             
-            internal void Complete()
+            // Close 후 WaitOne 하게되면 오류가 발생하기 때문에 급하게 코드 수정
+            public void Wait() 
             {
-                mpe.Set();
+                mpe.WaitOne();
                 mpe.Close();
             }
+            
+            internal void Complete() => mpe.Set();
         }
 
         // Awaiter 와 Action을 한쌍으로 관리하기 위한 구조체
