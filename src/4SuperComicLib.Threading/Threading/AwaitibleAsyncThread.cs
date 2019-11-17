@@ -5,16 +5,14 @@ using System.Threading;
 
 namespace SuperComicLib.Threading
 {
-    public delegate IEnumerator<Action> AwaitibleAsyncMethod();
-
-    public sealed class AwaitibleAsyncThread
+    public class AwaitibleAsyncThread
     {
-        private bool skipframe;
-        private bool working;
-        private ManualResetEvent revent = new ManualResetEvent(false);
-        private Action action;
+        protected bool skipframe;
+        protected bool working;
+        protected ManualResetEvent revent = new ManualResetEvent(false);
+        protected Action action;
 
-        public IEnumerator StartThread(AwaitibleAsyncMethod asyncMethod)
+        public virtual IEnumerator StartThread(AwaitibleAsyncMethod asyncMethod)
         {
             skipframe = true;
             working = true;
@@ -26,13 +24,13 @@ namespace SuperComicLib.Threading
                     skipframe = true;
                     action.Invoke();
                     revent.Set();
-                    revent.Reset(); // 이걸 빼먹네
+                    revent.Reset();
                 }
             revent.Close();
             yield break;
         }
 
-        private void SubThreadWork(AwaitibleAsyncMethod method)
+        protected virtual void SubThreadWork(AwaitibleAsyncMethod method)
         {
             IEnumerator<Action> enumerator = method.Invoke();
             while (enumerator.MoveNext())
