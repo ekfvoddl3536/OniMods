@@ -33,6 +33,8 @@ namespace SuperComicLib.Threading
 
         public virtual void Scheduled(AwaitibleAsyncMethod method)
         {
+            if (working)
+                throw new InvalidOperationException("이미 메인 스레드가 작업을 실행하고 있습니다.");
             if (method == null)
                 throw new ArgumentNullException(nameof(method));
             targets.Enqueue(method);
