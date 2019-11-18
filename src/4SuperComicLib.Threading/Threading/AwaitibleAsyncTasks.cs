@@ -45,7 +45,7 @@ namespace SuperComicLib.Threading
 
             public Awaiter Invoke(Action action)
             {
-                Awaiter awaiter = new Awaiter(new ManualResetEvent(true));
+                Awaiter awaiter = new Awaiter(new ManualResetEvent(false)); // 초기값은 항상 false
                 tasks.queuedAct = new QueuedAction { GetAction = action, GetAwaiter = awaiter };
                 tasks.skipframe = false;
                 return awaiter;
