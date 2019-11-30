@@ -1,4 +1,4 @@
-namespace AdvancedGeneratos
+﻿namespace AdvancedGeneratos
 {
     using static STRINGS.UI;
     using static TUNING.BUILDINGS;
