@@ -17,7 +17,7 @@ namespace SuperComicLib.Threading
         {
             workThreadBlocking = true;
             working = true;
-            new Thread(SubThreadWork);
+            new Thread(SubThreadWork).Start(); // 이거 왜 이슈 안들어옴? 아무도 이거 안쓰나 ㅋㅋ
             while (working)
                 if (workThreadBlocking) yield return null;
                 else
