@@ -6,16 +6,18 @@
     * Higher readability
     * Support `function`
     * Support `local variables`
+    * Support `global variables`
     * Add `data type` concept
 * Apply `UTF-8 (no BOM)` encoding
 * Removed all commands except goto
-* Added `label`, `local` commands
+* Added `label`, `local` keywords
 * Added `+ operator`, `- operator`, `* operator`, `/ operator`, `% operator`
 * Added `& operator`, `| operator`, `^ operator`
 * Added `if`, `else if`, `else`
 * Added `== operator`, `!= operator`, `>= operator`, `<= operator`, `> operator`, `< operator` 
 * Added `int`, `long`, `float`, `double`, `string` data types
 * Added `= operator`
+* Added `global`, `this` keywords
 
 ### Before
 ```
@@ -218,6 +220,18 @@ If the return type of the function you want to call is not `void`, you can save 
 local(<return type>) <var name>
 
 <var name> = <func name>(<value>,...)
+```
+
+### `global` Keyword
+This new keyword is basically used when declaring a global variable outside of a function  
+When using declared global variables must be used with `this` keyword  
+
+```
+global int a
+
+int func(int a):
+  this.a + a
+  ret
 ```
 
 
