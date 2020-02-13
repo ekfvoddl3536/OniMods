@@ -204,7 +204,7 @@ local(<type>) <name>
 
 ### Call
 You can call other functions from within the function  
-Only constants or parameters or local variables are allowed for `<value>`  
+Only `constants` or `parameters` or `local variables` or `global variables` are allowed for `<value>`  
 
 `<value>` is not needed if the function you want to call does not have any parameters  
 ```
