@@ -222,7 +222,7 @@ local(<return type>) <var name>
 <var name> = <func name>(<value>,...)
 ```
 
-### `global` Keyword
+### `global` & `this` Keyword
 This new keyword is basically used when declaring a global variable outside of a function  
 When using declared global variables must be used with `this` keyword  
 
