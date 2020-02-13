@@ -81,14 +81,14 @@ The `cmp` and `je`, `jne`, `jl`, `jg`, `jge/jnl`, `jle/jng` commands are replace
 | cmp `x`, `y` | if (`x` `<operator>` `y`) |
 
 ### Operators
-| Command | Operator |
+| (BF) Command | (AF) Operator |
 | :--------: | :------: |
-| je | `==` |
-| jne | `!=` |
-| jl | `<` |
-| jg | `>` |
-| jge/jnl | `>=` |
-| jle/jng | `<=` |
+| je | `!=` |
+| jne | `==` |
+| jl | `>=` |
+| jg | `<=` |
+| jge/jnl | `<` |
+| jle/jng | `>` |
 
 ### Example
 #### Before
