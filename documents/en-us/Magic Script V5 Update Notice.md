@@ -46,6 +46,12 @@
 
 
 
+
+# Additional Changes (2020. 03. 03. Final)
+* No longer supports `.oni.script`, use `.onisr` instead
+* Apply `UTF-8 (no BOM)` encoding for all `.onisr`
+
+
 ### Before
 ```
 push 0;
