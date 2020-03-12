@@ -97,11 +97,6 @@ int complex(int a, int b):
   ret
 ```
 
-# Keywords
-## if, else, else if
-
-## for, foreach
-
 # Main
 ## Script Trigger
 ```csharp
@@ -141,3 +136,6 @@ Run once every 33ms
 void update(float dt, marg cmd):
   ret
 ```
+
+# Details
+see [here](https://github.com/ekfvoddl3536/OniMods/blob/test/documents/en-us/Magic%20Script%20V5%20Update%20Notice.md)
