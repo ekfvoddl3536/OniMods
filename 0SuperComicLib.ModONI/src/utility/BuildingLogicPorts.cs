@@ -1,3 +1,5 @@
+﻿#region LICENSE
+/*
 MIT License
 
 Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
@@ -19,3 +21,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+#endregion
+using UnityEngine;
+using LPORT = LogicPorts.Port;
+
+namespace SuperComicLib.ModONI
+{
+    using static LogicOperationalController;
+    using static STRINGS.UI.LOGIC_PORTS;
+    public static class BuildingLogicPorts
+    {
+        public static void RegisterSingleInput(GameObject go, CellOffset offset = default)
+        {
+            var ports = go.AddOrGet<LogicPorts>();
+            ports.inputPortInfo = new LPORT[] 
+            {
+                LPORT.InputPort(PORT_ID, offset, CONTROL_OPERATIONAL, CONTROL_OPERATIONAL_ACTIVE, CONTROL_OPERATIONAL_INACTIVE)
+            };
+            ports.outputPorts = null;
+        }
+    }
+}

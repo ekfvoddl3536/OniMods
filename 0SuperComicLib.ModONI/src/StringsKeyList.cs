@@ -1,3 +1,5 @@
+﻿#region LICENSE
+/*
 MIT License
 
 Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
@@ -19,3 +21,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+#endregion
+namespace SuperComicLib.ModONI
+{
+    public sealed class StringsKeyList
+    {
+        public readonly string[] Buffer;
+        private int count_;
+
+        public StringsKeyList(int capacity)
+        {
+            Buffer = new string[capacity];
+            count_ = 0;
+        }
+
+        public StringsKeyList AddItem(string value)
+        {
+            Buffer[count_++] = value;
+            return this;
+        }
+
+        public StringsKeyList ADD_NAME_DESC_EFFECT(string buildingID_upper)
+        {
+            const string KPATH = "STRINGS.BUILDINGS.PREFABS.";
+
+            int x = count_;
+            var buf = Buffer;
+
+            string path = KPATH + buildingID_upper;
+
+            buf[x++] = $"{path}.NAME";
+            buf[x++] = $"{path}.DESC";
+            buf[x++] = $"{path}.EFFECT";
+
+            count_ = x;
+
+            return this;
+        }
+    }
+}

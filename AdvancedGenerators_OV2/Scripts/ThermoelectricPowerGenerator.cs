@@ -1,3 +1,5 @@
+﻿#region LICENSE
+/*
 MIT License
 
 Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
@@ -19,3 +21,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+#endregion
+namespace AdvancedGenerators
+{
+    public sealed class ThermoelectricPowerGenerator : AdvancedEnergyGenerator
+    {
+        public override void EnergySim200ms(float dt)
+        {
+            base.EnergySim200ms(dt);
+
+            var op = operational;
+            op.SetFlag(wireConnectedFlag, CircuitID != ushort.MaxValue);
+            op.SetActive(op.IsOperational);
+
+            if (HasMeter)
+                meter.SetPositionPercent(op.IsActive ? 1 : 0);
+
+            if (op.IsOperational)
+            {
+                GenerateJoules(WattageRating * dt, true);
+
+                var db = Db.Get();
+                selectable.SetStatusItem(db.StatusItemCategories.Power, db.BuildingStatusItems.Wattage, this);
+            }
+        }
+    }
+}

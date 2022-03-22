@@ -1,3 +1,5 @@
+﻿#region LICENSE
+/*
 MIT License
 
 Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
@@ -19,3 +21,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+#endregion
+using System;
+using System.IO;
+using System.Runtime.CompilerServices;
+
+namespace SuperComicLib.ModONI
+{
+    public static class ModDirectory
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetPath(Type type) => Path.GetDirectoryName(type.Assembly.Location);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetPath<T>() => GetPath(typeof(T));
+    }
+}
