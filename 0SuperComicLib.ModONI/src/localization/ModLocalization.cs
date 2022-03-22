@@ -24,23 +24,27 @@ SOFTWARE.
 */
 #endregion
 using System;
+using System.Collections.Generic;
 using ELANG = Localization.Language;
 
 namespace SuperComicLib.ModONI
 {
-    public abstract class ModLocalization<TKey>
-        where TKey : unmanaged, IModLocalizationKey
+    public abstract class ModLocalization
     {
-        private static ModLocalization<TKey> _instance;
-        public static ModLocalization<TKey> Default => _instance;
+        private static readonly Dictionary<Guid, ModLocalization> pool = new Dictionary<Guid, ModLocalization>();
+        public static ModLocalization GetInstance(Guid uuid)
+        {
+            pool.TryGetValue(uuid, out ModLocalization result);
+            return result;
+        }
 
         protected string[] texts_;
 
-        protected ModLocalization()
+        protected ModLocalization(Guid uuid)
         {
             OnInitialize();
 
-            var inst = _instance;
+            var inst = GetInstance(uuid);
             if (inst != null)
             {
                 int prevLen = texts_.Length;
@@ -50,7 +54,7 @@ namespace SuperComicLib.ModONI
                     throw new InvalidOperationException("some strings are deleted");
             }
 
-            _instance = this;
+            pool[uuid] = this;
         }
 
         public virtual string[] Texts => texts_;
@@ -71,7 +75,7 @@ namespace SuperComicLib.ModONI
         /// import the missing strings from the original strings.
         /// </summary>
         /// <param name="other">Provider of the original strings</param>
-        protected virtual void OnMergeTexts(ModLocalization<TKey> other) =>
+        protected virtual void OnMergeTexts(ModLocalization other) =>
             texts_ = MergeTexts(other.texts_, texts_);
 
         protected static string[] MergeTexts(string[] originalStrings, string[] translatedStrings)

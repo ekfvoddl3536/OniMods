@@ -44,6 +44,8 @@ namespace AdvancedGenerators
             bd.ExhaustKilowattsWhenActive = HEAT_EXHAUST;
             bd.SelfHeatKilowattsWhenActive = HEAT_SELF;
 
+            bd.OverheatTemperature = MAXIMUM_TEMP;
+
             bd.ViewMode = OverlayModes.Temperature.ID;
 
             bd.AudioCategory = "Metal";
@@ -69,7 +71,7 @@ namespace AdvancedGenerators
             go.AddOrGet<LoopingSounds>();
 
             go.AddOrGet<ThermoelectricPowerGenerator>();
-            go.AddOrGet<MinimumOperatingTemperature>().minimumTemperature = MinimumTemp;
+            go.AddOrGet<MinimumOperatingTemperature>().minimumTemperature = MINIMUM_TEMP;
 
             Tinkerable.MakePowerTinkerable(go);
             go.AddOrGetDef<PoweredActiveController.Def>();

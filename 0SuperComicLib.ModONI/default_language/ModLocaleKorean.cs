@@ -31,16 +31,20 @@ namespace SuperComicLib.ModONI
     /// <summary>
     /// 가장 우선순위가 낮은 기본 표시 언어
     /// </summary>
-    public abstract class ModLocaleKorean<TKey> : ModLocalization<TKey>
+    public abstract class ModLocaleKorean<TKey> : ModLocalization
         where TKey : unmanaged, IModLocalizationKey
     {
+        protected ModLocaleKorean() : base(default(TKey).UUID)
+        {
+        }
+
         protected override sealed void OnInitialize()
         {
-            if (Default == null)
-            {
-                // 기본 텍스트 가져오기
-                var res = OnLoadOriginalStrings();
+            // 기본 텍스트 가져오기
+            var res = OnLoadOriginalStrings();
 
+            if (GetInstance(default(TKey).UUID) == null)
+            {
                 // 폴더로 출력 (반드시 순차 출력)
                 var fi_info = new FileInfo(Path.Combine(ModDirectory.GetPath<TKey>(), "original_strings_UTF16LE.txt"));
 
@@ -48,8 +52,17 @@ namespace SuperComicLib.ModONI
                 if (fi_info.Exists == false)
                 {
                     var w = new StreamWriter(fi_info.Create(), Encoding.Unicode, 4096, false);
+                    
+                    w.WriteLine("# Localization UUID");
+                    w.WriteLine(default(TKey).UUID.ToString());
+                    w.WriteLine();
+                    w.WriteLine();
+                    
+                    w.Flush();
+
                     for (int i = 0, max = res.Length; i < max; ++i)
                     {
+                        w.WriteLine($"# strings index: [{i}]");
                         w.WriteLine(res[i]);
                         w.WriteLine();
                         w.WriteLine();
@@ -59,9 +72,9 @@ namespace SuperComicLib.ModONI
 
                     w.Close();
                 }
-
-                texts_ = res;
             }
+
+            texts_ = res;
         }
 
         // 기본 표시 텍스트를 로딩
@@ -69,7 +82,7 @@ namespace SuperComicLib.ModONI
 
         public override sealed Localization.Language MainLanguage => Localization.Language.Korean;
 
-        protected override sealed void OnMergeTexts(ModLocalization<TKey> other) =>
+        protected override sealed void OnMergeTexts(ModLocalization other) =>
             // 기존의 번역 텍스트가 더 높은 우선 순위를 갖는다
             texts_ = MergeTexts(texts_, other.Texts);
 

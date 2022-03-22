@@ -45,7 +45,7 @@ namespace AdvancedGenerators
             public const string ID = nameof(RefinedCarbonGenerator);
             public const string AnimSTR = "generatorphos_kanim";
 
-            public const int WATT = 1800;
+            public const int WATT = 1200;
 
             public const int HEAT_SELF = 2;
             public const int HEAT_EXHAUST = 2;
@@ -59,8 +59,6 @@ namespace AdvancedGenerators
 
             public static readonly string[] Materials = new[] { METAL, BUILDABLERAW };
             public static readonly float[] MateMassKg = new[] { MASS_KG.TIER5, MASS_KG.TIER4 };
-
-            public static readonly string ID_UPPER = ID.ToUpper();
         }
 
         public class ThermoelectricGenerator
@@ -74,12 +72,11 @@ namespace AdvancedGenerators
             public const int HEAT_SELF = -8;
             public const int HEAT_EXHAUST = -140;
 
-            public const float MinimumTemp = 253.15f;
+            public const float MINIMUM_TEMP = 253.15f;
+            public const float MAXIMUM_TEMP = 473.15f;
 
             public static readonly string[] Materials = new[] { REFINED_METAL };
             public static readonly float[] MateMassKg = new[] { MASS_KG.TIER4 };
-
-            public static readonly string ID_UPPER = ID.ToUpper();
         }
 
         public class NaphthaGenerator
@@ -101,8 +98,6 @@ namespace AdvancedGenerators
             public static readonly float[] MateMassKg = new[] { MASS_KG.TIER3, MASS_KG.TIER3 };
 
             public const int WATT = 2200;
-
-            public static readonly string ID_UPPER = ID.ToUpper();
         }
 
         public class EcoFriendlyMethaneGenerator
@@ -129,7 +124,6 @@ namespace AdvancedGenerators
             public static readonly float[] MateMassKg = new[] { MASS_KG.TIER5, MASS_KG.TIER1 };
 
             public static readonly Tag TagFilter = new Tag("Filter");
-
         }
     }
 }

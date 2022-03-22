@@ -24,10 +24,14 @@ SOFTWARE.
 */
 #endregion
 using SuperComicLib.ModONI;
+using System;
 
 namespace AdvancedGenerators.LocalStrings
 {
     public readonly struct ModStringsKey : IModLocalizationKey
     {
+        private static readonly Guid MY_GUID = Guid.Parse("e75e01c8-6e42-4d8a-a395-c785040d24a7");
+
+        public Guid UUID => MY_GUID;
     }
 }

@@ -42,14 +42,14 @@ namespace SuperComicLib.ModONI
             return this;
         }
 
-        public StringsKeyList ADD_NAME_DESC_EFFECT(string buildingID_upper)
+        public StringsKeyList ADD_NAME_DESC_EFFECT(string buildingID)
         {
             const string KPATH = "STRINGS.BUILDINGS.PREFABS.";
 
             int x = count_;
             var buf = Buffer;
 
-            string path = KPATH + buildingID_upper;
+            string path = KPATH + buildingID.ToUpper();
 
             buf[x++] = $"{path}.NAME";
             buf[x++] = $"{path}.DESC";
