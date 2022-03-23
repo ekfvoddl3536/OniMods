@@ -43,7 +43,8 @@ namespace SuperComicLib.ModONI
             // 기본 텍스트 가져오기
             var res = OnLoadOriginalStrings();
 
-            if (GetInstance(default(TKey).UUID) == null)
+            var instance = GetInstance(default(TKey).UUID);
+            if (instance == null)
             {
                 // 폴더로 출력 (반드시 순차 출력)
                 var fi_info = new FileInfo(Path.Combine(ModDirectory.GetPath<TKey>(), "original_strings_UTF16LE.txt"));
@@ -52,12 +53,12 @@ namespace SuperComicLib.ModONI
                 if (fi_info.Exists == false)
                 {
                     var w = new StreamWriter(fi_info.Create(), Encoding.Unicode, 4096, false);
-                    
+
                     w.WriteLine("# Localization UUID");
                     w.WriteLine(default(TKey).UUID.ToString());
                     w.WriteLine();
                     w.WriteLine();
-                    
+
                     w.Flush();
 
                     for (int i = 0, max = res.Length; i < max; ++i)
@@ -73,6 +74,8 @@ namespace SuperComicLib.ModONI
                     w.Close();
                 }
             }
+            else if (instance is ModLocaleKorean<TKey>)
+                throw new System.InvalidOperationException($"GUID: {default(TKey).UUID} is alredy exist");
 
             texts_ = res;
         }
