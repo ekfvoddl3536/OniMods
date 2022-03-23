@@ -51,29 +51,28 @@ namespace AdvancedGenerators
             bd.AudioCategory = "Metal";
 
             bd.PowerOutputOffset = new CellOffset(1, 0);
+            bd.LogicInputPorts = LogicOperationalController.CreateSingleInputPortList(new CellOffset(-1, 0));
+
+            bd.RequiresPowerOutput = true;
 
             return bd;
         }
 
-        public override void DoPostConfigureUnderConstruction(GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, new CellOffset(1, 0));
-
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, new CellOffset(1, 0));
-
         public override void DoPostConfigureComplete(GameObject go)
         {
-            BuildingLogicPorts.RegisterSingleInput(go, new CellOffset(1, 0));
-
             go.AddOrGet<LogicOperationalController>();
+
             go.GetComponent<KPrefabID>().AddTag(RoomConstraints.ConstraintTags.IndustrialMachinery);
 
             go.AddOrGet<LoopingSounds>();
 
-            go.AddOrGet<ThermoelectricPowerGenerator>();
             go.AddOrGet<MinimumOperatingTemperature>().minimumTemperature = MINIMUM_TEMP;
+            
+            var gen = go.AddOrGet<ThermoelectricPowerGenerator>();
+            gen.powerDistributionOrder = 8;
 
             Tinkerable.MakePowerTinkerable(go);
+
             go.AddOrGetDef<PoweredActiveController.Def>();
         }
     }

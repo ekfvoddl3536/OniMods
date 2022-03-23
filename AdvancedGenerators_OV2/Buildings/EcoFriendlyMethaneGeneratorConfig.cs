@@ -57,20 +57,19 @@ namespace AdvancedGenerators
             bd.InputConduitType = ConduitType.Gas;
             bd.OutputConduitType = ConduitType.Gas;
 
+            bd.RequiresPowerOutput = true;
+
+            bd.LogicInputPorts = LogicOperationalController.CreateSingleInputPortList(default);
+
             return bd;
         }
-
-        public override void DoPostConfigureUnderConstruction(GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, default);
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
             go.GetComponent<KPrefabID>().AddTag(RoomConstraints.ConstraintTags.IndustrialMachinery);
 
             go.AddOrGet<LoopingSounds>();
+            Prioritizable.AddRef(go);
 
             var ist = go.AddOrGet<Storage>();
             var ost = go.AddComponent<Storage>();
@@ -124,13 +123,11 @@ namespace AdvancedGenerators
             adg.InStorage = ist;
             adg.OutStorage = ost;
 
-            Tinkerable.MakeFarmTinkerable(go);
+            Tinkerable.MakePowerTinkerable(go);
         }
 
         public override void DoPostConfigureComplete(GameObject go)
         {
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
             go.AddOrGet<LogicOperationalController>();
             go.AddOrGetDef<PoweredActiveController.Def>();
         }

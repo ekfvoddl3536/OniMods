@@ -54,15 +54,10 @@ namespace AdvancedGenerators
             bd.RequiresPowerOutput = true;
 
             bd.InputConduitType = ConduitType.Liquid;
+            bd.LogicInputPorts = LogicOperationalController.CreateSingleInputPortList(default);
 
             return bd;
         }
-
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
-        public override void DoPostConfigureUnderConstruction(GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, default);
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefab_tag)
         {
@@ -110,8 +105,6 @@ namespace AdvancedGenerators
 
         public override void DoPostConfigureComplete(GameObject go)
         {
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
             go.AddOrGet<LogicOperationalController>();
             go.AddOrGetDef<PoweredActiveController.Def>();
         }

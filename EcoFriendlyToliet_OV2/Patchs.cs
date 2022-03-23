@@ -26,7 +26,7 @@ SOFTWARE.
 using HarmonyLib;
 using SuperComicLib.ModONI;
 
-namespace AdvancedGenerators.Patchs
+namespace EcoFriendlyToliet
 {
     using static GlobalConsts;
     [HarmonyPatch(typeof(Db), nameof(Db.Initialize))]
@@ -34,26 +34,37 @@ namespace AdvancedGenerators.Patchs
     {
         public static void Postfix()
         {
-            var list = new StringsKeyList(12);
+            var list = new StringsKeyList(8);
 
             new LocalStrings.KoreanDef().Apply(
                 list
-                    .ADD_NAME_DESC_EFFECT(RefinedCarbonGenerator.ID)
-                    .ADD_NAME_DESC_EFFECT(ThermoelectricGenerator.ID)
-                    .ADD_NAME_DESC_EFFECT(NaphthaGenerator.ID)
-                    .ADD_NAME_DESC_EFFECT(EcoFriendlyMethaneGenerator.ID)
+                    .AddItem("STRINGS.BUILDING.STATUSITEMS.FERZTOILET.NAME")
+                    .AddItem("STRINGS.BUILDING.STATUSITEMS.FERZTOILET.TOOLTIP")
+                    .ADD_NAME_DESC_EFFECT(EcoFriendlyToilet.ID)
+                    .ADD_NAME_DESC_EFFECT(AutoPurifyWashsink.ID)
                     .Buffer
                 );
 
-            ModUtil.AddBuildingToPlanScreen(TAB_CATEGORY, RefinedCarbonGenerator.ID);
-            ModUtil.AddBuildingToPlanScreen(TAB_CATEGORY, ThermoelectricGenerator.ID);
-            ModUtil.AddBuildingToPlanScreen(TAB_CATEGORY, NaphthaGenerator.ID);
-            ModUtil.AddBuildingToPlanScreen(TAB_CATEGORY, EcoFriendlyMethaneGenerator.ID);
+            GlobalVars.FerzToilet_ =
+                new StatusItem(
+                    EcoFriendlyToilet.ID,
+                    "BUILDING",
+                    string.Empty,
+                    StatusItem.IconType.Info,
+                    NotificationType.Neutral,
+                    false,
+                    OverlayModes.None.ID)
+                {
+                    resolveStringCallback = STATIC_CALLBACK
+                };
 
-            ModTechs.Insert("AdvancedPowerRegulation", RefinedCarbonGenerator.ID);
-            ModTechs.Insert("Plastics", NaphthaGenerator.ID);
-            ModTechs.Insert("RenewableEnergy", ThermoelectricGenerator.ID);
-            ModTechs.Insert("ImprovedCombustion", EcoFriendlyMethaneGenerator.ID);
+            ModUtil.AddBuildingToPlanScreen("Plumbing", EcoFriendlyToilet.ID);
+            ModUtil.AddBuildingToPlanScreen("Medical", AutoPurifyWashsink.ID);
         }
+
+        private static string STATIC_CALLBACK(string data, object arg) => 
+            arg is FerzToilet.StatesInstance smi
+            ? data.Replace("{FlushesRemaining}", (EcoFriendlyToilet.MAX_FLUSHES - smi.master._flushesUsed).ToString())
+            : data;
     }
 }

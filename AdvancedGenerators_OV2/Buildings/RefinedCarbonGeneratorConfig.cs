@@ -52,6 +52,10 @@ namespace AdvancedGenerators
             res.AudioCategory = AU_HOLLOWMETAL;
             res.AudioSize = "large";
 
+            res.RequiresPowerOutput = true;
+
+            res.LogicInputPorts = LogicOperationalController.CreateSingleInputPortList(default);
+
             return res;
         }
 
@@ -93,16 +97,8 @@ namespace AdvancedGenerators
             Tinkerable.MakePowerTinkerable(go);
         }
 
-        public override void DoPostConfigurePreview(BuildingDef def, GameObject go) => 
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
-        public override void DoPostConfigureUnderConstruction(GameObject go) =>
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
         public override void DoPostConfigureComplete(GameObject go)
         {
-            BuildingLogicPorts.RegisterSingleInput(go, default);
-
             go.AddOrGet<LogicOperationalController>();
             go.AddOrGetDef<PoweredActiveController.Def>();
         }

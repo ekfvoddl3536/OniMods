@@ -34,19 +34,21 @@ namespace AdvancedGenerators
         public Storage OutStorage;
         public Formula InOutItems = new Formula();
 
-        [MyCmpGet]
         public ElementConsumer Consumer;
 
         #region prefabinit, spawn
         protected override void OnPrefabInit()
         {
             base.OnPrefabInit();
+
+            Consumer = GetComponent<ElementConsumer>();
             Consumer.EnableConsumption(false);
         }
 
         protected override void OnSpawn()
         {
             base.OnSpawn();
+
             Consumer.EnableConsumption(true);
         }
 
