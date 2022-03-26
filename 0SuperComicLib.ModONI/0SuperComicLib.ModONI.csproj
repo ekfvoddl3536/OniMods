@@ -71,7 +71,6 @@
     <Compile Include="src\localization\ModLocalization.cs" />
     <Compile Include="src\localization\IModLocalizationKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\utility\BuildingLogicPorts.cs" />
     <Compile Include="src\StringsKeyList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

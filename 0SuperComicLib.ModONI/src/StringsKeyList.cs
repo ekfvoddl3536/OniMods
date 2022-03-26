@@ -28,7 +28,7 @@ namespace SuperComicLib.ModONI
     public sealed class StringsKeyList
     {
         public readonly string[] Buffer;
-        private int count_;
+        public int count_;
 
         public StringsKeyList(int capacity)
         {
@@ -38,7 +38,7 @@ namespace SuperComicLib.ModONI
 
         public StringsKeyList AddItem(string value)
         {
-            Buffer[count_++] = value;
+            Buffer[count_++] = value.ToUpper();
             return this;
         }
 
@@ -46,8 +46,8 @@ namespace SuperComicLib.ModONI
         {
             const string KPATH = "STRINGS.BUILDINGS.PREFABS.";
 
-            int x = count_;
             var buf = Buffer;
+            int x = count_;
 
             string path = KPATH + buildingID.ToUpper();
 

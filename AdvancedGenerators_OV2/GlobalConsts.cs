@@ -29,8 +29,6 @@ namespace AdvancedGenerators
     using static TUNING.MATERIALS;
     internal static class GlobalConsts
     {
-        public const string KPATH = "STRINGS.BUILDINGS.PREFABS.";
-
         public const int HITPT = HITPOINTS.TIER1;
         public const float CONSTRUCT_TIME = CONSTRUCTION_TIME_SECONDS.TIER3;
         public const float MELT_PT = MELTING_POINT_KELVIN.TIER2;

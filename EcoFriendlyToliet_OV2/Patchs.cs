@@ -38,8 +38,8 @@ namespace EcoFriendlyToliet
 
             new LocalStrings.KoreanDef().Apply(
                 list
-                    .AddItem("STRINGS.BUILDING.STATUSITEMS.FERZTOILET.NAME")
-                    .AddItem("STRINGS.BUILDING.STATUSITEMS.FERZTOILET.TOOLTIP")
+                    .AddItem($"STRINGS.BUILDING.STATUSITEMS.{EcoFriendlyToilet.ID}.NAME")
+                    .AddItem($"STRINGS.BUILDING.STATUSITEMS.{EcoFriendlyToilet.ID}.TOOLTIP")
                     .ADD_NAME_DESC_EFFECT(EcoFriendlyToilet.ID)
                     .ADD_NAME_DESC_EFFECT(AutoPurifyWashsink.ID)
                     .Buffer
