@@ -50,6 +50,23 @@
       <HintPath>E:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Ionic.Zip.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PLibCore">
+      <HintPath>..\__TranslationMod__\0AutoTranslation\PLibs\PLibCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PLibOptions">
+      <HintPath>..\__TranslationMod__\0AutoTranslation\PLibs\PLibOptions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PLibUI">
+      <HintPath>..\__TranslationMod__\0AutoTranslation\PLibs\PLibUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -73,29 +90,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="0Presets\IOProfile.cs" />
-    <Compile Include="0Presets\ProfilePreset.cs" />
-    <Compile Include="0Presets\PresetUtil.cs" />
-    <Compile Include="1MemoryIO\UnmanagedWriter.cs" />
+    <Compile Include="2Options\GlobalModConfig.cs" />
     <Compile Include="3Patch\0classes\P1SaveFileRoot.cs" />
-    <Compile Include="3Patch\0global\Delegates.cs" />
+    <Compile Include="0Global\Delegates.cs" />
+    <Compile Include="3Patch\1SaveLoader\SavePostProcess.cs" />
     <Compile Include="3Patch\2SaveManager\OnPrefabInit_PATCH_1.cs" />
-    <Compile Include="3Patch\1SaveLoader\PrepSaveFile_PATCH.cs" />
     <Compile Include="3Patch\1SaveLoader\MAIN_SaveSBB_PATCH_1.cs" />
     <Compile Include="3Patch\0classes\SavePostProcessor.cs" />
-    <Compile Include="3Patch\0global\SharedData.cs" />
+    <Compile Include="0Global\GlobalHeader.cs" />
     <Compile Include="3Patch\2SaveManager\SaveBw_PATCH_2.cs" />
     <Compile Include="3Patch\3SpeedControlScreen\Unpause_PATCH.cs" />
-    <Compile Include="3Patch\SimSave_PATCH.cs" />
+    <Compile Include="3Patch\4Sim\SimSave_PATCH.cs" />
+    <Compile Include="3Patch\5Cluster\Save00_PATCH_3.cs" />
+    <Compile Include="4KMod\ModLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="1MemoryIO\UnmanagedStream.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\0SuperComicLib.ModONI\0SuperComicLib.ModONI.csproj">
-      <Project>{94351e44-aab0-4a29-84b2-5ea1db21f67f}</Project>
-      <Name>0SuperComicLib.ModONI</Name>
-      <Private>False</Private>
+    <ProjectReference Include="..\0SuperComicLib.MonoRuntime\0SuperComicLib.MonoRuntime.csproj">
+      <Project>{45cd2f5b-144c-4196-b321-631890e34547}</Project>
+      <Name>0SuperComicLib.MonoRuntime</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,37 @@
-﻿using HarmonyLib;
+﻿// MIT License
+//
+// Copyright (c) 2023. Super Comic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+#pragma warning disable IDE0028
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using UnityEngine;
 
 namespace LazySaver
 {
-    using static SharedData;
+    using static GlobalHeader;
     [HarmonyPatch(typeof(SaveManager), nameof(SaveManager.Save))]
     public static class SaveBw_PATCH_2
     {
@@ -61,25 +85,36 @@ namespace LazySaver
             sceneObjs.Remove(saveInstTag);
 
             // LOOP
-            var orderedKeys = 
+            var orderedKeys =
                 OrderedKeysAddRange(sceneObjs.Keys)
                     .Take(m_orderedKeysCount)
                     .OrderBy(_stickerBomb_first)
                     .OrderBy(_underConstruction_second)
                     .GetEnumerator();
 
-            m_instWrite.Invoke(__instance, saveInstTag, new List<SaveLoadRoot>(new[] { SaveGame.Instance.GetComponent<SaveLoadRoot>() }), wr);
+            var _cached_L0 = new List<SaveLoadRoot>(1);
+            _cached_L0.Add(SaveGame.Instance.GetComponent<SaveLoadRoot>());
 
-            UnityEngine.Debug.Assert(orderedKeys != null);
+            m_instWrite.Invoke(__instance, saveInstTag, _cached_L0, wr);
 
-            while (orderedKeys.MoveNext())
-            {
-                var currentTag = orderedKeys.Current;
-                var currentObjs = sceneObjs[currentTag];
+            if (option.isForcedDelay && arg_isAutoSave)
+                while (orderedKeys.MoveNext())
+                {
+                    var currentTag = orderedKeys.Current;
+                    var currentObjs = sceneObjs[currentTag];
 
-                WriteMatch(__instance, currentObjs, currentTag, false);
-                WriteMatch(__instance, currentObjs, currentTag, true);
-            }
+                    WriteMatchWithDelay(__instance, currentObjs, currentTag, false);
+                    WriteMatchWithDelay(__instance, currentObjs, currentTag, true);
+                }
+            else
+                while (orderedKeys.MoveNext())
+                {
+                    var currentTag = orderedKeys.Current;
+                    var currentObjs = sceneObjs[currentTag];
+
+                    WriteMatch(__instance, currentObjs, currentTag, false);
+                    WriteMatch(__instance, currentObjs, currentTag, true);
+                }
 
             orderedKeys.Dispose();
 
@@ -88,6 +123,16 @@ namespace LazySaver
                 sceneObjs.Add(saveInstTag, saveGameValues);
 
             return false;
+        }
+
+        private static void WriteMatchWithDelay(SaveManager @this, List<SaveLoadRoot> objs, in Tag tag, bool match)
+        {
+            var dt = System.DateTime.Now;
+
+            WriteMatch(@this, objs, tag, match);
+
+            if ((System.DateTime.Now - dt).Ticks > 20 * TimeSpan.TicksPerMillisecond)
+                Thread.Sleep(option.delayDuration);
         }
 
         private static void WriteMatch(SaveManager @this, List<SaveLoadRoot> objs, in Tag tag, bool match)
