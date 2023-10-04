@@ -1,28 +1,25 @@
-﻿#region LICENSE
-/*
-MIT License
+﻿// MIT License
+//
+// Copyright (c) 2022-2023. SuperComic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#endregion
 using KSerialization;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +28,7 @@ using static STRINGS.DUPLICANTS.DISEASES;
 using static STRINGS.UI.BUILDINGEFFECTS;
 using KBUTTON = KIconButtonMenu.ButtonInfo;
 
-namespace EcoFriendlyToliet
+namespace EcoFriendlyToilet
 {
     using static GlobalConsts.EcoFriendlyToilet;
     public class FerzToilet : StateMachineComponent<FerzToilet.StatesInstance>, ISaveLoadable, IUsable, IGameObjectEffectDescriptor, IBasicBuilding
@@ -42,15 +39,6 @@ namespace EcoFriendlyToliet
 
         [SerializeField]
         public Toilet.SpawnInfo solidWastePerUse;
-
-        // [SerializeField]
-        // public int maxFlushes = 24;
-        // [SerializeField]
-        // public string diseaseId = string.Empty;
-        // [SerializeField]
-        // public int diseasePerFlush;
-        // [SerializeField]
-        // public int diseaseOnDupePerFlush;
 
         [Serialize]
         public int _flushesUsed;
@@ -145,7 +133,7 @@ namespace EcoFriendlyToliet
 
             for (int x = arr.Length; --x >= 0;)
             {
-                string str = GameTagExtensions.ProperName(arr[x].requestedItemTag);
+                string str = GameTagExtensions.ProperName(arr[x].RequestedItemTag);
                 res[x] =
                     new Descriptor(
                         GetTooltipStr(ELEMENTCONSUMEDPERUSE, str, mass),
@@ -206,8 +194,8 @@ namespace EcoFriendlyToliet
                     TransformExtensions.GetPosition(transform), 
                     solidWastePerUse.mass, 
                     SOLID_WASTE_TEMP, 
-                    idx,
-                    DISEASE_PER_FLUSH, true);
+                    0,
+                    0, true);
 
             storage.Store(kpp);
             
@@ -250,8 +238,7 @@ namespace EcoFriendlyToliet
 
             public void CreateCleanChore()
             {
-                if (cleanChore != null)
-                    cleanChore.Cancel("dupe");
+                cleanChore?.Cancel("dupe");
 
                 cleanChore = 
                     new WorkChore<ToiletWorkableClean>(
@@ -263,10 +250,7 @@ namespace EcoFriendlyToliet
 
             public void CancelCleanChore()
             {
-                if (cleanChore == null)
-                    return;
-
-                cleanChore.Cancel("Cancelled");
+                cleanChore?.Cancel("Cancelled");
                 cleanChore = null;
             }
 

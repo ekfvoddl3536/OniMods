@@ -1,29 +1,25 @@
-﻿#region LICENSE
-/*
-MIT License
+﻿// MIT License
+//
+// Copyright (c) 2022-2023. SuperComic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#endregion
-using SuperComicLib.ModONI;
 using TUNING;
 using UnityEngine;
 
@@ -96,15 +92,9 @@ namespace AdvancedGenerators
             ec.consumptionRadius = 2;
             ec.isRequired = ec.storeOnConsume = true;
 
-            var mdkg = go.AddOrGet<ManualDeliveryKG>();
-            mdkg.SetStorage(ist);
-            mdkg.allowPause = false;
-            mdkg.capacity = FILTER_MAXSTORED;
-            mdkg.refillMass = 10;
-            mdkg.requestedItemTag = TagFilter;
-            mdkg.choreTypeIDHash = Db.Get().ChoreTypes.GeneratePower.Id;
-
             var adg = go.AddOrGet<ConsumGasPowerGenerator>();
+            adg.InStorage = ist;
+            adg.OutStorage = ost;
             adg.Consumer = ec;
             adg.InOutItems = new EnergyGenerator.Formula
             {
@@ -112,7 +102,6 @@ namespace AdvancedGenerators
                 {
                     new EnergyGenerator.InputItem(cc.capacityTag, METHANE_CONSUM_RATE, 1),
                     new EnergyGenerator.InputItem(SimHashes.Oxygen.CreateTag(), EXHAUST_CO2_RATE, OXYGEN_MAXSTORED),
-                    new EnergyGenerator.InputItem(TagFilter, EXHAUST_H2O_RATE, 50)
                 },
                 outputs = new[]
                 {
@@ -120,8 +109,6 @@ namespace AdvancedGenerators
                     new EnergyGenerator.OutputItem(SimHashes.CarbonDioxide, EXHAUST_CO2_RATE, true, 383.15f)
                 }
             };
-            adg.InStorage = ist;
-            adg.OutStorage = ost;
 
             Tinkerable.MakePowerTinkerable(go);
         }

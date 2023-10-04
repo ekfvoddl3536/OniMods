@@ -1,32 +1,29 @@
-﻿#region LICENSE
-/*
-MIT License
+﻿// MIT License
+//
+// Copyright (c) 2022-2023. SuperComic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#endregion
 using UnityEngine;
 using TUNING;
 
-namespace EcoFriendlyToliet
+namespace EcoFriendlyToilet
 {
     using static GlobalConsts;
     using static GlobalConsts.AutoPurifyWashsink;
@@ -49,7 +46,7 @@ namespace EcoFriendlyToliet
 
             res.ViewMode = OverlayModes.Power.ID;
 
-            res.AudioCategory = "Metal";
+            res.AudioCategory = AUDIO.CATEGORY.HOLLOW_METAL;
 
             return res;
         }
@@ -81,17 +78,17 @@ namespace EcoFriendlyToliet
 
             var md1 = go.AddOrGet<ManualDeliveryKG>();
             md1.SetStorage(st);
-            md1.requestedItemTag = new Tag(nameof(SimHashes.Water));
-            md1.minimumMass = WATER_USE;
+            md1.RequestedItemTag = new Tag(nameof(SimHashes.Water));
+            md1.MinimumMass = WATER_USE * 10;
             md1.capacity = MAX_STORED;
-            md1.refillMass = WATER_USE / 10f;
+            md1.refillMass = WATER_USE << 1;
 
             var md2 = go.AddComponent<ManualDeliveryKG>();
             md2.SetStorage(st);
-            md2.requestedItemTag = GameTags.Filter;
-            md2.minimumMass = MIN_FILTER_DELIVERY_KG;
+            md2.RequestedItemTag = GameTags.Filter;
+            md2.MinimumMass = MIN_FILTER_DELIVERY_KG << 3;
             md2.capacity = MAX_STORED;
-            md2.refillMass = MIN_FILTER_DELIVERY_KG / 10f;
+            md2.refillMass = MIN_FILTER_DELIVERY_KG;
 
             md1.choreTypeIDHash = md2.choreTypeIDHash = Db.Get().ChoreTypes.FetchCritical.IdHash;
 

@@ -1,4 +1,27 @@
-﻿using System.Collections.Generic;
+﻿// MIT License
+//
+// Copyright (c) 2022-2023. Super Comic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+using System;
+using System.Collections.Generic;
 using TUNING;
 using UnityEngine;
 using re_ = ComplexRecipe.RecipeElement;
@@ -36,6 +59,8 @@ namespace SupportPackage
 
             res.AddLogicPowerPort = false;
 
+            res.ViewMode = OverlayModes.Power.ID;
+
             return res;
         }
 
@@ -43,11 +68,9 @@ namespace SupportPackage
         {
             go.AddOrGet<BuildingComplete>().isManuallyOperated = true;
 
-            go.AddOrGet<DropAllWorkable>();
-            
             var cf = go.AddOrGet<InOneCockingStationEX>();
-            cf.heatedTemperature = 253.15f;
-            cf.storeProduced = true;
+            cf.heatedTemperature = 368.15f;
+            cf.storeProduced = false;
             
             go.AddOrGet<FabricatorIngredientStatusManager>();
 
@@ -62,46 +85,89 @@ namespace SupportPackage
 
             Prioritizable.AddRef(go);
 
-            StorageSetup(go, cf);
-
             ConfigureRecipes();
 
-            go.AddOrGet<InOneRefrigerator>();
+            StorageSetup(go, cf);
+
+            var def = go.AddOrGetDef<InOneRefrigeratorController.Def>();
+            def.simulatedInternalTemperature = 255.15f; // -18℃
+            def.simulatedThermalConductivity = 8192f;
+            def.powerSaverEnergyUsage = 20f;
+            def.coolingHeatKW = 0.125f;
+            def.steadyHeatKW = 0;
 
             go.AddOrGet<UserNameable>();
+            go.AddOrGet<DropAllWorkable>();
 
-            go.AddOrGetDef<RocketUsageRestriction.Def>().restrictOperational = false;
             go.AddOrGetDef<PoweredController.Def>();
+
+            go.GetComponent<KPrefabID>().AddTag(RoomConstraints.ConstraintTags.CookTop);
         }
 
         protected static void StorageSetup(GameObject go, ComplexFabricator cf)
         {
             var st = go.AddOrGet<Storage>();
             st.SetDefaultStoredItemModifiers(Storage.StandardFabricatorStorage);
-            st.capacityKg = 20_000f;
-            st.showInUI = true;
-            cf.inStorage = st;
-
-            st = go.AddComponent<Storage>();
-            st.SetDefaultStoredItemModifiers(Storage.StandardFabricatorStorage);
-            st.capacityKg = 20_000f;
-            st.showInUI = true;
-            cf.buildStorage = st;
-
-            st = go.AddComponent<Storage>();
-            st.SetDefaultStoredItemModifiers(Storage.StandardInsulatedStorage);
             st.capacityKg = STORED_MAX;
             st.fetchCategory = Storage.FetchCategory.GeneralStorage;
             st.storageFilters = STORAGEFILTERS.FOOD;
-            st.showInUI = st.allowItemRemoval = st.showCapacityStatusItem = true;
+            st.showInUI = st.showDescriptor = st.allowItemRemoval = st.showCapacityStatusItem = true;
+
+            var inSt = go.AddComponent<Storage>();
+            inSt.showInUI = true;
+            inSt.SetDefaultStoredItemModifiers(Storage.StandardFabricatorStorage);
+
+            cf.inStorage = inSt;
+
+            var buildSt = go.AddComponent<Storage>();
+            buildSt.showInUI = true;
+            buildSt.SetDefaultStoredItemModifiers(Storage.StandardFabricatorStorage);
+
+            cf.buildStorage = buildSt;
+
             cf.outStorage = st;
+
+            go.AddOrGet<TreeFilterable>();
+            go.AddOrGet<FoodStorage>().storage = st;
+            go.AddOrGet<InOneRefrigerator>().storage = st;
         }
 
         private static void ConfigureRecipes()
         {
+            AddRecipe(PICKLEDMEAL.RECIPEDESC, 21, PickledMealConfig.ID, new[]
+            {
+                new re_(BasicPlantFoodConfig.ID, 3f)
+            },
+            30f);
+
             AddRecipe(FRIEDMUSHBAR.RECIPEDESC, 1, FriedMushBarConfig.ID, new[]
             {
                 new re_(MushBarConfig.ID, 1f)
+            });
+
+            AddRecipe(FRIEDMUSHROOM.RECIPEDESC, 20, FriedMushroomConfig.ID, new[]
+            {
+                new re_(MushroomConfig.ID, 1f)
+            });
+
+            AddRecipe(COOKEDMEAT.RECIPEDESC, 21, CookedMeatConfig.ID, new[]
+            {
+                new re_(MeatConfig.ID, 2f)
+            });
+
+            AddRecipe(COOKEDMEAT.RECIPEDESC, 22, CookedFishConfig.ID, new[]
+            {
+                new re_(FishMeatConfig.ID, 1f),
+            });
+
+            AddRecipe(COOKEDMEAT.RECIPEDESC, 22, CookedFishConfig.ID, new[]
+            {
+                new re_(ShellfishMeatConfig.ID, 1f)
+            });
+
+            AddRecipe(GRILLEDPRICKLEFRUIT.RECIPEDESC, 20, GrilledPrickleFruitConfig.ID, new[]
+            {
+                new re_(PrickleFruitConfig.ID, 1f)
             });
 
             AddRecipe(COLDWHEATBREAD.RECIPEDESC, 50, ColdWheatBreadConfig.ID, new[]
@@ -112,45 +178,6 @@ namespace SupportPackage
             AddRecipe(COOKEDEGG.RECIPEDESC, 1, CookedEggConfig.ID, new[]
             {
                 new re_(RawEggConfig.ID, 1f)
-            });
-
-            AddRecipe(GRILLEDPRICKLEFRUIT.RECIPEDESC, 20, GrilledPrickleFruitConfig.ID, new[]
-            {
-                new re_(PrickleFruitConfig.ID, 1f)
-            });
-
-            AddRecipe(SALSA.RECIPEDESC, 101, SalsaConfig.ID, new[]
-            {
-                new re_(PrickleFruitConfig.ID, 2f),
-                new re_(SpiceNutConfig.ID, 2f)
-            });
-
-            AddRecipe(PICKLEDMEAL.RECIPEDESC, 21, PickledMealConfig.ID, new[]
-            {
-                new re_(BasicPlantFoodConfig.ID, 3f)
-            }, 
-            30f);
-
-            AddRecipe(FRIEDMUSHROOM.RECIPEDESC, 20, FriedMushroomConfig.ID, new[]
-            {
-                new re_(MushroomConfig.ID, 1f)
-            });
-
-            AddRecipe(COOKEDMEAT.RECIPEDESC, 21, CookedMeatConfig.ID, new[]
-            {
-                new re_(SpiceNutConfig.ID, 1f),
-                new re_(MeatConfig.ID, 2f)
-            });
-
-            AddRecipe(SPICEBREAD.RECIPEDESC, 100, SpiceBreadConfig.ID, new[]
-            {
-                new re_(SpiceNutConfig.ID, 1f),
-                new re_(ColdWheatConfig.SEED_ID, 10f)
-            });
-
-            AddRecipe(COOKEDFISH.RECIPEDESC, 21, CookedFishConfig.ID, new[]
-            {
-                new re_(FishMeatConfig.ID, 1f),
             });
 
             if (DlcManager.IsExpansion1Active())

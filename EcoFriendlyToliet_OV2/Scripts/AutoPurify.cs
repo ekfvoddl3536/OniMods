@@ -1,34 +1,32 @@
-﻿#region LICENSE
-/*
-MIT License
+﻿// MIT License
+//
+// Copyright (c) 2022-2023. SuperComic (ekfvoddl3535@naver.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-Copyright (c) 2022. Super Comic (ekfvoddl3535@naver.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-#endregion
 using KSerialization;
 using UnityEngine;
 
-namespace EcoFriendlyToliet
+namespace EcoFriendlyToilet
 {
     using static GlobalConsts.AutoPurifyWashsink;
+    using static CircuitManager.ConnectionStatus;
     [SerializationConfig(MemberSerialization.OptIn)]
     public class AutoPurify : EnergyConsumer, IEnergyConsumer, ISim1000ms, ICircuitConnected
     {
@@ -36,6 +34,7 @@ namespace EcoFriendlyToliet
         protected ushort circuitID_;
         protected bool power_;
         protected int powerCell_;
+        protected CircuitManager.ConnectionStatus prevConnectionStatus_;
 
         float IEnergyConsumer.WattsNeededWhenActive => USE_POWER;
 
@@ -65,14 +64,19 @@ namespace EcoFriendlyToliet
 
         public override void SetConnectionStatus(CircuitManager.ConnectionStatus connection_status)
         {
-            bool res = connection_status == CircuitManager.ConnectionStatus.Powered;
+            bool res = connection_status == Powered;
             if (res)
-                PlayCircuitSound("powered");
-            else if (connection_status == CircuitManager.ConnectionStatus.Unpowered)
+            {
+                if (prevConnectionStatus_ != Powered)
+                    PlayCircuitSound("powered");
+            }
+            else if ((connection_status != 0) ^ (prevConnectionStatus_ == Unpowered))
             {
                 circuitOverloadTime = 6f;
                 PlayCircuitSound("overdraw");
             }
+
+            prevConnectionStatus_ = connection_status;
 
             SetPowerState(res);
         }
@@ -82,18 +86,18 @@ namespace EcoFriendlyToliet
             var conv = converter_;
             if (circuitID_ == ushort.MaxValue || flag == false)
             {
-                conv.consumedElements[0].massConsumptionRate =
+                conv.consumedElements[0].MassConsumptionRate =
                     conv.outputElements[0].massGenerationRate = UNPOWERED_CONV;
 
-                conv.consumedElements[1].massConsumptionRate =
+                conv.consumedElements[1].MassConsumptionRate =
                     conv.outputElements[1].massGenerationRate = UNPOWERED_FCON;
             }
             else
             {
-                conv.consumedElements[0].massConsumptionRate =
+                conv.consumedElements[0].MassConsumptionRate =
                     conv.outputElements[0].massGenerationRate = POWERED_CONV;
 
-                conv.consumedElements[1].massConsumptionRate =
+                conv.consumedElements[1].MassConsumptionRate =
                     conv.outputElements[1].massGenerationRate = POWERED_FCON;
             }
 
