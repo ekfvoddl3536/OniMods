@@ -8,6 +8,7 @@
   - [File naming convention](#file-naming-convention)
   - [Format of the file](#format-of-the-file)
     - [Caution](#caution)
+  - [Download full-example](#download-full-example)
 
 ## Scope of translation
 Not every MOD that exists can be translated this way.  
@@ -158,3 +159,9 @@ SAMPLE2: "\\"
 The file extension must be a text file (`.txt`).  
   
 Additionally, the encoding of the file must be `UTF-8`.  
+  
+
+## Download full-example
+You can download a working full-example [here](https://drive.google.com/file/d/1a9CeT2PbVGcMfw9k0KuGNlmdD9ntz1Sv/view?usp=sharing).  
+  
+  
