@@ -6,6 +6,7 @@ The latest `0SuperComicLib.Core.dll`, `1SuperComicLib.eTxt.dll` and `0SuperComic
 - `0SuperComicLib.ModONI.dll`
   
 `0SuperComicLib.Core.dll` and `1SuperComicLib.eTxt.dll` are available [here](https://github.com/ekfvoddl3536/0SuperComicLibs/releases), and `0SuperComicLib.ModONI.dll` is available [here](https://github.com/ekfvoddl3536/OniMods/releases).  
+You can download all three DLLs [here](https://github.com/ekfvoddl3536/OniMods/releases/latest).  
 Or you can get it by subscribing and downloading one of the mods I've made.  
   
 Choose the more convenient way.  
