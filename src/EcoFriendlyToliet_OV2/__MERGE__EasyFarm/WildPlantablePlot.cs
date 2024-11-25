@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#pragma warning disable IDE0031 // Null 전파 사용
 using KSerialization;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -28,12 +27,8 @@ using UnityEngine;
 namespace EcoFriendlyToilet
 {
     [SerializationConfig(MemberSerialization.OptIn)]
-    public sealed unsafe class WildPlantablePlot : PlantablePlot, ISaveLoadable, IGameObjectEffectDescriptor
+    public sealed unsafe class WildPlantablePlot : PlantablePlot, ISaveLoadable
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Ref<KPrefabID> GetPlantRef(PlantablePlot pp) =>
-            Unsafe.As<byte, Ref<KPrefabID>>(ref Unsafe.AsRef<byte>((byte*)Unsafe.AsPointer(ref pp.occupyingObjectVisualOffset) - 0x10));
-
         private void SyncPriority(PrioritySetting setting)
         {
             var pcomp = GetComponent<Prioritizable>();
@@ -62,36 +57,12 @@ namespace EcoFriendlyToilet
             var plant_ = plant;
             plant = null;
 
+            if (plant_)
+                occupyingObject = plant_.gameObject;
+
             base.OnSpawn();
 
-            if (plant_ != null)
-            {
-                plant = plant_;
-                SetOccupyInternal(plant_.gameObject);
-            }
-        }
-
-        protected override GameObject SpawnOccupyingObject(GameObject go)
-        {
-            var seed = go.GetComponent<PlantableSeed>();
-            if (seed == null)
-            {
-                destroyEntityOnDeposit = false;
-                return go;
-            }
-
-            var poscbc = Grid.CellToPosCBC(Grid.PosToCell(this), plantLayer);
-            var g1 = GameUtil.KInstantiate(Assets.GetPrefab(seed.PlantID), poscbc, plantLayer);
-            
-            var c1 = g1.GetComponent<MutantPlant>();
-            if (c1 != null)
-                go.GetComponent<MutantPlant>().CopyMutationsTo(c1);
-
-            g1.SetActive(true);
-
-            destroyEntityOnDeposit = true;
-
-            return g1;
+            plant = plant_;
         }
 
         private void PlantSettingInternal(GameObject g1)
@@ -113,18 +84,9 @@ namespace EcoFriendlyToilet
 
         protected override void ConfigureOccupyingObject(GameObject newPlant)
         {
-            GetPlantRef(this).Set(newPlant.GetComponent<KPrefabID>());
+            plant = newPlant.GetComponent<KPrefabID>();
 
             PlantSettingInternal(newPlant);
-        }
-
-        private void SetOccupyInternal(GameObject go)
-        {
-            occupyingObject = go;
-            
-            var comp = go.GetComponent<HarvestDesignatable>();
-            if (comp != null)
-                comp.SetHarvestWhenReady(true);
         }
     }
 }

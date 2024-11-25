@@ -49,7 +49,7 @@ namespace AdvancedGenerators
         public float GetSliderValue(int _) => GetFromKelvin(target_temp);
         public void SetSliderValue(float value, int _) => target_temp = (float)GetToKelvin(value);
         public string GetSliderTooltipKey(int _) => SLIDER_TOOLTIP_KEY;
-        public string GetSliderTooltip() => Strings.Get(SLIDER_TOOLTIP_KEY).String;
+        public string GetSliderTooltip(int _) => Strings.Get(SLIDER_TOOLTIP_KEY).String;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static float GetFromKelvin(float v) => Mathf.Round(GameUtil.GetTemperatureConvertedFromKelvin(v, GameUtil.temperatureUnit));
@@ -92,7 +92,7 @@ namespace AdvancedGenerators
 
                 var bt = pe.Temperature;
                 pe.Temperature = Mathf.Min(bt, target_temp);
-                pe.Mass *= 0.96875f;
+                // pe.Mass *= 0.96875f; // NOTE: O.P. PATCH!
 
                 var storage = outStorage;
                 if (storage.items.Count != 0)

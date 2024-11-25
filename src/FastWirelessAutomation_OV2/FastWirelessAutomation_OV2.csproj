@@ -1,120 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../build/common.props" />
+  
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E77EA812-17CF-485D-AD19-9373A4320898}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyTitle>FastWirelessAutomation_OV2</AssemblyTitle>
     <RootNamespace>FastWirelessAutomation</RootNamespace>
-    <AssemblyName>FastWirelessAutomation_OV2</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
+  
+  <Import Project="../../build/references.props" />
+  
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>J:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>J:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>J:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>J:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>J:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
+    <ProjectReference Include="../0SuperComicLib.ModONI/0SuperComicLib.ModONI.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="0SuperComicLib.Core">
+      <HintPath>$(slib)0SuperComicLib.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Buildings\FastWirelessEmitterConfig.cs" />
-    <Compile Include="Buildings\FastWirelessReceiverConfig.cs" />
-    <Compile Include="Patches\Db_Initialize_PATCH.cs" />
-    <Compile Include="Patches\Game_OnSpawn_Patch_OV2.cs" />
-    <Compile Include="GlobalConsts.cs" />
-    <Compile Include="LocalStrings\KoreanDef.cs" />
-    <Compile Include="Networks\ChannelData.cs" />
-    <Compile Include="Networks\ChannelManager.cs" />
-    <Compile Include="Networks\OrChannelData.cs" />
-    <Compile Include="Networks\Types.cs" />
-    <Compile Include="ModLoad.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\SignalEmitter.cs" />
-    <Compile Include="Scripts\SignalNetworkBase.cs" />
-    <Compile Include="Scripts\SignalReceiver.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\0SuperComicLib.ModONI\0SuperComicLib.ModONI.csproj">
-      <Project>{94351e44-aab0-4a29-84b2-5ea1db21f67f}</Project>
-      <Name>0SuperComicLib.ModONI</Name>
-    </ProjectReference>
-    <ProjectReference Include="G:\[]SuperComicLibs\0SuperComicLib.Core\0SuperComicLib.Core.csproj">
-      <Project>{1674b047-ca4c-44a1-9d39-211e38c800dc}</Project>
-      <Name>0SuperComicLib.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="G:\[]SuperComicLibs\1SuperComicLib.eTxt\1SuperComicLib.eTxt.csproj">
-      <Project>{253b1147-bedb-4789-b1b8-b03b2f2a8d89}</Project>
-      <Name>1SuperComicLib.eTxt</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".editorconfig" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
 </Project>

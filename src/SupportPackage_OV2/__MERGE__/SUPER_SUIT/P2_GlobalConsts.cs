@@ -63,9 +63,11 @@ namespace SupportPackage
             {
                 public const string ID = nameof(Advance_SuperSuit);
 
-                public const string ANISTR = "body_shirt_cold01_kanim";
+                // public const string ANISTR = "body_shirt_cold01_kanim";
+                public const string ANISTR = "body_shirt_decor01_kanim";
 
-                public const string ICON = "shirt_cold01_kanim";
+                // public const string ICON = "shirt_cold01_kanim";
+                public const string ICON = "shirt_decor02_kanim";
 
                 public const int CLOTH_MASS = 20;
                 public const int FAB_TIME = 120;
@@ -81,12 +83,14 @@ namespace SupportPackage
 
                 public const string ANISTR = "body_shirt_decor01_kanim";
 
+                // public const string ICON = "shirt_decor01_kanim";
                 public const string ICON = "shirt_decor01_kanim";
 
                 public const int CLOTH_MASS = 4;
                 public const int FAB_TIME = 30;
 
-                public const int ADD_KG = 100;
+                // public const int ADD_KG = 100;
+                public const int ADD_KG = 128 * 100;
                 public const int SPEED_PENALTY = 0;
 
                 public static ci_ Info;
@@ -96,14 +100,17 @@ namespace SupportPackage
             {
                 public const string ID = nameof(MediumBackpack);
 
-                public const string ANISTR = "body_shirt_hot01_kanim";
+                // public const string ANISTR = "body_shirt_hot01_kanim";
+                public const string ANISTR = "body_shirt_hot_shearling_kanim";
 
-                public const string ICON = "shirt_hot01_kanim";
+                // public const string ICON = "shirt_hot01_kanim";
+                public const string ICON = "shirt_decor02_kanim";
 
                 public const int CLOTH_MASS = 8;
                 public const int FAB_TIME = 60;
 
-                public const int ADD_KG = 400;
+                // public const int ADD_KG = 400;
+                public const int ADD_KG = 2048 * 100;
                 public const int SPEED_PENALTY = -2;
 
                 public static ci_ Info;
@@ -113,14 +120,17 @@ namespace SupportPackage
             {
                 public const string ID = nameof(LargeBackpack);
 
-                public const string ANISTR = "body_shirt_cold01_kanim";
+                // public const string ANISTR = "body_shirt_cold01_kanim";
+                public const string ANISTR = "body_shirt_decor01_kanim";
 
-                public const string ICON = "shirt_cold01_kanim";
+                // public const string ICON = "shirt_cold01_kanim";
+                public const string ICON = "shirt_decor03_kanim";
 
                 public const int CLOTH_MASS = 20;
                 public const int FAB_TIME = 120;
 
-                public const int ADD_KG = 4800;
+                // public const int ADD_KG = 4800;
+                public const int ADD_KG = 65536 * 100;
                 public const int SPEED_PENALTY = -4;
 
                 public static ci_ Info;

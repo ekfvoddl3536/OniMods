@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using SuperComicLib;
+
 namespace FastWirelessAutomation.Networks
 {
     public unsafe class OrChannelData : ChannelData
@@ -71,8 +73,7 @@ namespace FastWirelessAutomation.Networks
 
             // 0SuperComicLib.CMath.Max:
             // https://github.com/ekfvoddl3536/0SuperComicLibs/blob/master/0SuperComicLib.Core/Public/__global__/CMath.cs
-            temp = cnt > 0;
-            cnt *= *(byte*)&temp;
+            cnt = CMath.Max(cnt, 0);
 
             if ((count_ = cnt) == 0)
                 ChannelManager.SignalEmit(emitter.Channel, false);

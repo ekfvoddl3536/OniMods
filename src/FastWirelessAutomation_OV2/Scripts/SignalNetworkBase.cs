@@ -63,23 +63,26 @@ namespace FastWirelessAutomation
             SetChannel(channel_);
         }
 
-        protected override void OnCleanUp() => 
+        protected override void OnCleanUp()
+        {
             Unsubscribe((int)GameHashes.OperationalChanged, OnOperChangedDele);
+            Unsubscribe((int)GameHashes.CopySettings, OnCopySettingsDele);
+        }
         #endregion
 
         #region 슬라이더
-        public int SliderDecimalPlaces(int index) => 0;
+        public int SliderDecimalPlaces(int _) => 0;
 
-        public float GetSliderMin(int index) => 0;
+        public float GetSliderMin(int _) => 0;
 
-        public float GetSliderMax(int index) => MAX_CHANNEL;
+        public float GetSliderMax(int _) => MAX_CHANNEL;
 
-        public float GetSliderValue(int index) => channel_;
+        public float GetSliderValue(int _) => channel_;
 
-        public void SetSliderValue(float percent, int index) => SetChannel((int)percent);
+        public void SetSliderValue(float percent, int _) => SetChannel((int)percent);
 
-        public string GetSliderTooltipKey(int index) => TOOLTIP_KEY;
-        public string GetSliderTooltip() => Strings.Get(TOOLTIP_KEY).String;
+        public string GetSliderTooltipKey(int _) => TOOLTIP_KEY;
+        public string GetSliderTooltip(int _) => Strings.Get(TOOLTIP_KEY).String;
 
         public string SliderTitleKey => TITLE_KEY;
         public string SliderUnits => string.Empty;
@@ -96,13 +99,11 @@ namespace FastWirelessAutomation
         protected virtual unsafe void OnOperationalChanged(bool on)
         {
             var controller = GetComponent<KBatchedAnimController>();
-            if (controller)
-            {
-                int idx = (*(byte*)&on & 1) << 1; // 0 or 2
 
-                controller.Play(animList[idx + 1]);
-                controller.Queue(animList[idx]);
-            }
+            int idx = (*(byte*)&on & 1) << 1; // 0 or 2
+
+            controller.Play(animList[idx + 1]);
+            controller.Queue(animList[idx]);
         }
 
         protected virtual void OnCopySettings(GameObject go)

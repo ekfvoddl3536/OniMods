@@ -49,10 +49,10 @@ namespace SupportPackage
             w.requiredSkillPerk = db.SkillPerks.CanElectricGrill.Id;
             w.WorkerStatusItem = db.DuplicantStatusItems.Cooking;
             
-            w.overrideAnims = new KAnimFile[1]
-            {
+            w.overrideAnims =
+            [
                 Assets.GetAnim((HashedString) "anim_interacts_cookstation_kanim")
-            };
+            ];
 
             w.AttributeConverter = db.AttributeConverters.CookingSpeed;
 
@@ -65,7 +65,7 @@ namespace SupportPackage
             w.OnWorkTickActions += WORK_TICK_ACTION;
         }
 
-        private void WORK_TICK_ACTION(Worker w, float dt)
+        private void WORK_TICK_ACTION(WorkerBase w, float dt)
         {
             Debug.Assert(w != null, "How did we get a null worker?");
 

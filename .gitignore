@@ -37,7 +37,13 @@ bld/
 [Ll]ogs/
 
 # Library(s)
+lib/
 libs/
+
+# Dummy Files
+*.zip
+*.7z
+/build/PATH.txt
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

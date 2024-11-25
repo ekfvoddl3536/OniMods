@@ -24,6 +24,9 @@ using System;
 
 namespace SuperComicLib.ModONI
 {
+    /// <summary>
+    /// A list of keys of fixed array size.
+    /// </summary>
     public sealed class StringKeyList
     {
         internal readonly string[] _buffer;
@@ -47,6 +50,16 @@ namespace SuperComicLib.ModONI
             _buffer = new string[capacity];
         }
 
+        /// <summary>
+        /// Adds <c>NAME</c>, <c>DESC</c>, <c>EFFECT</c> in order for the id specified in the <c>"STRINGS.BUILDINGS.PREFABS"</c> path.<br/>
+        /// This method is equivalent to executing the following:<para/>
+        /// <code>
+        ///     <see cref="Add(string)">Add</see>("STRINGS.BUILDINGS.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".NAME");
+        ///     <see cref="Add(string)">Add</see>("STRINGS.BUILDINGS.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".DESC");
+        ///     <see cref="Add(string)">Add</see>("STRINGS.BUILDINGS.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".EFFECT");
+        /// </code>
+        /// </summary>
+        /// <returns>This method returns itself.</returns>
         public StringKeyList ADD_BUILDINGS(string id)
         {
             const string KPATH = "STRINGS.BUILDINGS.PREFABS.";
@@ -65,6 +78,16 @@ namespace SuperComicLib.ModONI
             return this;
         }
 
+        /// <summary>
+        /// Adds <c>NAME</c>, <c>DESC</c>, <c>EFFECT</c> in order for the id specified in the <c>"STRINGS.EQUIPMENT.PREFABS"</c> path.<br/>
+        /// This method is equivalent to executing the following:<para/>
+        /// <code>
+        ///     <see cref="Add(string)">Add</see>("STRINGS.EQUIPMENT.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".NAME");
+        ///     <see cref="Add(string)">Add</see>("STRINGS.EQUIPMENT.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".DESC");
+        ///     <see cref="Add(string)">Add</see>("STRINGS.EQUIPMENT.PREFABS." + <paramref name="id"/>.<see cref="string.ToUpper()">ToUpper</see>() + ".EFFECT");
+        /// </code>
+        /// </summary>
+        /// <returns>This method returns itself.</returns>
         public StringKeyList ADD_EQUIPMENT(string id)
         {
             const string KPATH = "STRINGS.EQUIPMENT.PREFABS.";
@@ -83,9 +106,14 @@ namespace SuperComicLib.ModONI
             return this;
         }
 
-        public StringKeyList Add(string id)
+        /// <summary>
+        /// Adds a key using the given <paramref name="strkey_fullpath"/> as the full path.
+        /// </summary>
+        /// <param name="strkey_fullpath">Case does not matter, but string keys must contain the full path.</param>
+        /// <returns>This method returns itself.</returns>
+        public StringKeyList Add(string strkey_fullpath)
         {
-            _buffer[_size++] = id.ToUpper();
+            _buffer[_size++] = strkey_fullpath.ToUpper();
 
             return this;
         }

@@ -40,6 +40,13 @@ namespace FastWirelessAutomation
             base.OnSpawn();
         }
 
+        protected override void OnCleanUp()
+        {
+            OnDisconnect(this);
+
+            base.OnCleanUp();
+        }
+
         public override Action<bool> EventHandler => on_updateState_cb;
 
         protected virtual unsafe void OnUpdateState(bool on)

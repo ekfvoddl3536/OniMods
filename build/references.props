@@ -1,0 +1,38 @@
+<Project>
+  
+  <PropertyGroup>
+    <!-- String(type) Binaries Directory Path -->
+    <sbin>../../build/bin/</sbin>
+    <!-- String(type) SuperComic Libraries Directory Path -->
+    <slib>../../build/lib/</slib>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(sbin)0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(sbin)Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(sbin)Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(sbin)UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(sbin)UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(sbin)System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+    
+</Project>

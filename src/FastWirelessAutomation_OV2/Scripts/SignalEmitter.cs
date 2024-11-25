@@ -34,6 +34,13 @@ namespace FastWirelessAutomation
 
         public override Action<bool> EventHandler => null;
 
+        protected override void OnCleanUp()
+        {
+            OnEmitterDisconenct(this);
+
+            base.OnCleanUp();
+        }
+
         protected override void SetChannel(int new_channel)
         {
             OnEmitterDisconenct(this);

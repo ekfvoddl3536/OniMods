@@ -1,6 +1,6 @@
 ﻿// MIT License
 //
-// Copyright (c) 2022-2023. Super Comic (ekfvoddl3535@naver.com)
+// Copyright (c) 2023. Super Comic (ekfvoddl3535@naver.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,14 @@
 // SOFTWARE.
 
 using System;
-using System.IO;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SuperComicLib.ModONI
+namespace SuperComicLib.Threading
 {
-    public static class ModDirectory
+    public interface ISyncTask
     {
-        /// <summary>
-        /// Gets the location of the assembly corresponding to the specified type.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetPath(Type type) => Path.GetDirectoryName(type.Assembly.Location);
-
-        /// <summary>
-        /// Gets the location of the assembly corresponding to the specified type.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetPath<T>() => GetPath(typeof(T));
     }
 }

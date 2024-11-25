@@ -27,6 +27,7 @@ using static STRINGS.UI.USERMENUACTIONS;
 using static STRINGS.DUPLICANTS.DISEASES;
 using static STRINGS.UI.BUILDINGEFFECTS;
 using KBUTTON = KIconButtonMenu.ButtonInfo;
+using System;
 
 namespace EcoFriendlyToilet
 {
@@ -72,12 +73,12 @@ namespace EcoFriendlyToilet
 
             GetComponent<ToiletWorkableUse>().trackUses = true;
 
-            meter = new MeterController(GetComponent<KBatchedAnimController>(), "meter_target", "meter", Meter.Offset.Behind, Grid.SceneLayer.NoLayer, new string[]
-            {
+            meter = new MeterController(GetComponent<KBatchedAnimController>(), "meter_target", "meter", Meter.Offset.Behind, Grid.SceneLayer.NoLayer,
+            [
                 "meter_target",
                 "meter_arrow",
                 "meter_scale"
-            });
+            ]);
             meter.SetPositionPercent((float)_flushesUsed / MAX_FLUSHES);
 
             smi.sm.flushes.Set(_flushesUsed, smi);
@@ -183,7 +184,7 @@ namespace EcoFriendlyToilet
             return res;
         }
 
-        private void Flush(Worker w)
+        private void Flush(WorkerBase w)
         {
             var ebh = ElementLoader.FindElementByHash(solidWastePerUse.elementID);
 
@@ -230,8 +231,7 @@ namespace EcoFriendlyToilet
             public List<Chore> activeUseChores;
             public Chore cleanChore;
 
-            public StatesInstance(FerzToilet master) : base(master) =>
-                activeUseChores = new List<Chore>();
+            public StatesInstance(FerzToilet master) : base(master) => activeUseChores = [];
 
             public bool IsToxicSandRemoved() =>
                 (object)master.storage.FindFirst(GameTagExtensions.Create(master.solidWastePerUse.elementID)) is null;
@@ -282,11 +282,11 @@ namespace EcoFriendlyToilet
 
         public class States : GameStateMachine<States, StatesInstance, FerzToilet>
         {
-            private static readonly HashedString[] FULL_ANIMS = new HashedString[]
-            {
+            private static readonly HashedString[] FULL_ANIMS =
+            [
                 "full_pre",
                 "full"
-            };
+            ];
 
             public State needElems;
             public State empty;

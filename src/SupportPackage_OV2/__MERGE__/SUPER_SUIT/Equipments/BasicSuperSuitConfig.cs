@@ -63,7 +63,7 @@ namespace SupportPackage
             res.additionalDescriptors.Add(new Descriptor(t_desc, t_desc));
 
             res.OnEquipCallBack = OnEquipVest;
-            res.OnUnequipCallBack = CoolVestConfig.OnUnequipVest;
+            res.OnUnequipCallBack = ClothingWearer.ClothingInfo.OnUnequipVest;
 
             res.RecipeDescription = ID.equipmentEffect();
 
@@ -71,7 +71,7 @@ namespace SupportPackage
             return res;
         }
 
-        public void OnEquipVest(Equippable eq) => CoolVestConfig.OnEquipVest(eq, CInfo);
+        public void OnEquipVest(Equippable eq) => ClothingWearer.ClothingInfo.OnEquipVest(eq, CInfo);
 
         protected virtual ClothingWearer.ClothingInfo CInfo => Info;
 

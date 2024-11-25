@@ -1,0 +1,7 @@
+Assembly-CSharp.dll
+Assembly-CSharp-firstpass.dll
+0Harmony.dll
+UnityEngine.dll
+UnityEngine.CoreModule.dll
+System.IO.Compression.dll
+System.Runtime.CompilerServices.Unsafe.dll

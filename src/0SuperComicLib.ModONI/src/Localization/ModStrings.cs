@@ -20,20 +20,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using SuperComicLib.eTxt;
 using System;
 using System.IO;
+using SuperComicLib.IO;
 
 namespace SuperComicLib.ModONI
 {
+    /// <summary>
+    /// Provides the string used in the mod
+    /// </summary>
     public abstract class ModStrings
     {
         private readonly Guid _uuid;
 
+        /// <summary>
+        /// Initializes with the provided debug guid.
+        /// </summary>
         protected ModStrings(Guid uuid) => _uuid = uuid;
 
+        /// <summary>
+        /// Initializes without the debug guid.
+        /// </summary>
+        protected ModStrings() : this(Guid.Empty)
+        {
+        }
+
+        /// <summary>
+        /// Retrieves the strings written in the native language or the default language of this mod.<br/>
+        /// The exported order corresponds to the elements of the key list provided to <see cref="Apply(StringKeyList)"/>,<br/>
+        /// so please be careful with the sequence.
+        /// </summary>
         protected abstract string[] OnLoadOriginalStrings();
 
+        /// <summary>
+        /// Add strings to the game using element values from the provided <see cref="StringKeyList"/>.
+        /// </summary>
         public void Apply(StringKeyList list)
         {
             var values = OnLoadOriginalStrings();
@@ -64,7 +85,7 @@ namespace SuperComicLib.ModONI
 
             w.Comment(@"Auto-generated file.");
             w.Comment(@"To learn how to provide translations, check out the following links:");
-            w.Comment(@"https://github.com/ekfvoddl3536/OniMods/tree/master/docs/String%20Translation%20Guide.md");
+            w.Comment(@"https://github.com/ekfvoddl3536/OniMods/blob/master/docs/ITPMM%20-%20String%20Translation%20Guide.md");
             w.WriteLine();
             w.Flush();
 
