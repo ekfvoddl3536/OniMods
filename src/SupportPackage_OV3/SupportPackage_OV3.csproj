@@ -2,7 +2,11 @@
 
   <PropertyGroup>
     <RootNamespace>SupportPackage</RootNamespace>
+    
+    <!-- Distribution builds should not contain experimental or personal features. -->
+    <!--
     <DefineConstants>$(DefineConstants);PRIVATE_CORE</DefineConstants>
+    -->
   </PropertyGroup>
   
   <Import Project="$(LazyDirectoryBuild)"/>
