@@ -1,0 +1,24 @@
+2.ECOFRIENDLYTOILET.NAME: "剩余使用次数 \"{FlushesRemaining}\" 次"
+2.ECOFRIENDLYTOILET.TOOLTIP: "该设施在需要维护之前，可供 \"{FlushesRemaining}\" 名复制人使用。"
+0.ECOFRIENDLYTOILET.NAME: "$(FormatAsLink '环保简易厕所' $id:EcoFriendlyToilet)"
+0.ECOFRIENDLYTOILET.DESC: 教导复制人环保排泄的重要性。
+0.ECOFRIENDLYTOILET.EFFECT: |-
+  此设施不需要管道，并能制造肥料。
+  必须定期清空生成的肥料。
+0.AUTOPURIFYWASHSINK.NAME: "$(FormatAsLink '环保洗手盆' $id:AutoPurifyWashsink)"
+0.AUTOPURIFYWASHSINK.DESC: "去除复制人身上的细菌，净化产生的污染水并重复利用。"
+0.AUTOPURIFYWASHSINK.EFFECT: |-
+  沾染细菌的复制人经过选定方向时会使用洗手盆。
+  如果有沙子，它会将污染水净化成干净的水。净化后的水会重复利用。
+  供电可以更快地净化，使用效率更高。
+0.ECOFRIENDLYWILDFARMTILE.NAME: "$(FormatAsLink '自然种植地砖' $id:EcoFriendlyWildFarmTile)"
+0.ECOFRIENDLYWILDFARMTILE.DESC: 种植一种作物。
+0.ECOFRIENDLYWILDFARMTILE.EFFECT: "可用作地板砖，可在建造前旋转，以自然(Wild)状态生长和收获。"
+0.ECOFRIENDLYWILDFLOWERPOT.NAME: "$(FormatAsLink '自然花盆' $id:EcoFriendlyWildFlowerPot)"
+0.ECOFRIENDLYWILDFLOWERPOT.DESC: 播种后种植一棵植物。
+0.ECOFRIENDLYWILDFLOWERPOT.EFFECT: "增加装饰度，有助于士气，以自然(Wild)状态生长。"
+0.ECOFRIENDLYWILDHANGINGPOT.NAME: "$(FormatAsLink '自然悬挂盆' $id:EcoFriendlyWildHangingPot)"
+0.ECOFRIENDLYWILDHANGINGPOT.DESC: 播种后种植一棵植物。
+0.ECOFRIENDLYWILDHANGINGPOT.EFFECT: |-
+  增加装饰度，有助于士气，以自然(Wild)状态生长。
+  必须悬挂在天花板上。

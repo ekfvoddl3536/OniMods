@@ -1,0 +1,15 @@
+{
+  "share": [
+    "0Harmony.dll",
+    "Assembly-CSharp.dll",
+    "Assembly-CSharp-firstpass.dll",
+    "UnityEngine.dll",
+    "UnityEngine.CoreModule.dll",
+    "System.Runtime.CompilerServices.Unsafe.dll"
+  ],
+  "lib": [
+    "Newtonsoft.Json.dll",
+    "Unity.TextMeshPro.dll",
+    "System.IO.Compression.dll"
+  ]
+}

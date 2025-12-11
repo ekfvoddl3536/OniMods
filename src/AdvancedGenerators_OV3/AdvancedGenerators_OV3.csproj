@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>AdvancedGenerators</RootNamespace>
+    
+    <UseAdditionalLibraries>true</UseAdditionalLibraries>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <LibRef Include="Unity.TextMeshPro" Private="false"/>
+  </ItemGroup>
+  
+  <Import Project="$(LazyDirectoryBuild)"/>
+  
+</Project>

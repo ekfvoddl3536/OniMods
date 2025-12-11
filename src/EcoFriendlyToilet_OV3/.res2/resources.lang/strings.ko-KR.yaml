@@ -1,0 +1,24 @@
+2.ECOFRIENDLYTOILET.NAME: "이용 \"{FlushesRemaining}\"회 남음"
+2.ECOFRIENDLYTOILET.TOOLTIP: "이 시설은 보수가 필요하기 전까지 \"{FlushesRemaining}\"명이 이용할 수 있습니다."
+0.ECOFRIENDLYTOILET.NAME: "$(FormatAsLink '친환경 간이 화장실' $id:EcoFriendlyToilet)"
+0.ECOFRIENDLYTOILET.DESC: 복제체에게 배출할 친환경의 중요성에 대해서 교육하십시오.
+0.ECOFRIENDLYTOILET.EFFECT: |-
+  이 시설은 배관을 요구하지 않으며, 비료를 만듭니다.
+  주기적으로 만들어진 비료를 비워야합니다.
+0.AUTOPURIFYWASHSINK.NAME: "$(FormatAsLink '친환경 세면대' $id:AutoPurifyWashsink)"
+0.AUTOPURIFYWASHSINK.DESC: "복제체로부터 세균을 제거하고, 만들어진 오염수를 정수하여 재사용합니다."
+0.AUTOPURIFYWASHSINK.EFFECT: |-
+  세균에 덮인 복제체는 선택된 방향으로 지나갈 때 세면대를 사용합니다.
+  모래가 있으면, 오염된 물을 깨끗한 물로 정수합니다. 정수된 물은 재사용합니다.
+  전력을 공급하면 더 빨리 정수할 수 있고, 보다 효율적으로 사용할 수 있습니다.
+0.ECOFRIENDLYWILDFARMTILE.NAME: "$(FormatAsLink '자연 재배 타일' $id:EcoFriendlyWildFarmTile)"
+0.ECOFRIENDLYWILDFARMTILE.DESC: 하나의 작물을 키웁니다.
+0.ECOFRIENDLYWILDFARMTILE.EFFECT: "바닥 타일로 사용하고 건설 전에 회전할 수 있으며, 자연(Wild) 상태로 성장하고 재배됩니다."
+0.ECOFRIENDLYWILDFLOWERPOT.NAME: "$(FormatAsLink '자연 화분' $id:EcoFriendlyWildFlowerPot)"
+0.ECOFRIENDLYWILDFLOWERPOT.DESC: 씨를 심으면 식물 하나를 키웁니다.
+0.ECOFRIENDLYWILDFLOWERPOT.EFFECT: "장식을 증가하고 사기에 기여하며, 자연(Wild) 상태로 성장합니다."
+0.ECOFRIENDLYWILDHANGINGPOT.NAME: "$(FormatAsLink '자연 매달린 단지' $id:EcoFriendlyWildHangingPot)"
+0.ECOFRIENDLYWILDHANGINGPOT.DESC: 씨를 심으면 식물 하나를 키웁니다.
+0.ECOFRIENDLYWILDHANGINGPOT.EFFECT: |-
+  장식을 증가하고 사기에 기여하며, 자연(Wild) 상태로 성장합니다.
+  천장에 매달아야 합니다.

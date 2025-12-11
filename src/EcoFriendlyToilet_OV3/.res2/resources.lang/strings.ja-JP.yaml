@@ -1,0 +1,24 @@
+2.ECOFRIENDLYTOILET.NAME: "残り \"{FlushesRemaining}\"回 利用可能"
+2.ECOFRIENDLYTOILET.TOOLTIP: "この施設は、メンテナンスが必要になるまでに \"{FlushesRemaining}\"人の複製人間が利用できます。"
+0.ECOFRIENDLYTOILET.NAME: "$(FormatAsLink '環境に優しい簡易トイレ' $id:EcoFriendlyToilet)"
+0.ECOFRIENDLYTOILET.DESC: 複製人間に排泄における環境保護の重要性について教育してください。
+0.ECOFRIENDLYTOILET.EFFECT: |-
+  この施設は配管を必要とせず、肥料を生成します。
+  定期的に生成された肥料を空にする必要があります。
+0.AUTOPURIFYWASHSINK.NAME: "$(FormatAsLink '環境に優しい洗面台' $id:AutoPurifyWashsink)"
+0.AUTOPURIFYWASHSINK.DESC: "複製人間から細菌を除去し、生成された汚染水を浄水して再利用します。"
+0.AUTOPURIFYWASHSINK.EFFECT: |-
+  細菌に覆われた複製人間は、選択された方向に通り過ぎるときに洗面台を使用します。
+  砂があれば、汚染された水をきれいな水に浄水します。浄水された水は再利用されます。
+  電力を供給すると、より速く浄水でき、より効率的に使用できます。
+0.ECOFRIENDLYWILDFARMTILE.NAME: "$(FormatAsLink '自然栽培タイル' $id:EcoFriendlyWildFarmTile)"
+00.ECOFRIENDLYWILDFARMTILE.DESC: 一つの作物を育てます。
+0.ECOFRIENDLYWILDFARMTILE.EFFECT: "床タイルとして使用でき、建設前に回転可能で、自然(Wild)な状態で成長し栽培されます。"
+0.ECOFRIENDLYWILDFLOWERPOT.NAME: "$(FormatAsLink '自然の植木鉢' $id:EcoFriendlyWildFlowerPot)"
+0.ECOFRIENDLYWILDFLOWERPOT.DESC: 種を植えると植物を一つ育てます。
+0.ECOFRIENDLYWILDFLOWERPOT.EFFECT: "装飾を増やし、士気に貢献し、自然(Wild)な状態で成長します。"
+0.ECOFRIENDLYWILDHANGINGPOT.NAME: "$(FormatAsLink '自然の吊り鉢' $id:EcoFriendlyWildHangingPot)"
+0.ECOFRIENDLYWILDHANGINGPOT.DESC: 種を植えると植物を一つ育てます。
+0.ECOFRIENDLYWILDHANGINGPOT.EFFECT: |-
+  装飾を増やし、士気に貢献し、自然(Wild)な状態で成長します。
+  天井から吊り下げる必要があります。

@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SupportPackage</RootNamespace>
+    <DefineConstants>$(DefineConstants);PRIVATE_CORE</DefineConstants>
+  </PropertyGroup>
+  
+  <Import Project="$(LazyDirectoryBuild)"/>
+</Project>

@@ -1,0 +1,8 @@
+1.FASTWIRELESSAUTO_SCREEN.TOOLTIP: You can change to the desired channel. OR Channel is 0 to 127.
+1.FASTWIRELESSAUTO_SCREEN.TITLE: Channel
+0.FASTWIRELESSEMITTER.NAME: Automation Signal Emitter (E)
+0.FASTWIRELESSEMITTER.DESC: Transmits the received automation signal to the specified channel.
+0.FASTWIRELESSEMITTER.EFFECT: Converts a wired signal into a wireless signal.
+0.FASTWIRELESSRECEIVER.NAME: Automation Signal Receiver (R)
+0.FASTWIRELESSRECEIVER.DESC: Receives a signal from the specified channel.
+0.FASTWIRELESSRECEIVER.EFFECT: Converts a wireless signal into a wired signal.

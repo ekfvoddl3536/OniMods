@@ -1,0 +1,24 @@
+2.ECOFRIENDLYTOILET.NAME: "{FlushesRemaining} uses remaining"
+2.ECOFRIENDLYTOILET.TOOLTIP: "This facility can be used by \"{FlushesRemaining}\" duplicants before requiring maintenance."
+0.ECOFRIENDLYTOILET.NAME: "$(FormatAsLink 'Eco-Friendly Outhouse' $id:EcoFriendlyToilet)"
+0.ECOFRIENDLYTOILET.DESC: Educate the duplicants on the importance of eco-friendly excretion.
+0.ECOFRIENDLYTOILET.EFFECT: |-
+  This facility does not require plumbing and produces fertilizer.
+  The produced fertilizer must be emptied periodically.
+0.AUTOPURIFYWASHSINK.NAME: "$(FormatAsLink 'Eco-Friendly Wash Basin' $id:AutoPurifyWashsink)"
+0.AUTOPURIFYWASHSINK.DESC: "Removes germs from duplicants, purifies the polluted water produced, and reuses it."
+0.AUTOPURIFYWASHSINK.EFFECT: |-
+  Duplicants covered in germs will use the Wash Basin when passing in the selected direction.
+  If Sand is available, it purifies the polluted water into clean water. The purified water is reused.
+  Supplying power allows for faster purification and more efficient use.
+0.ECOFRIENDLYWILDFARMTILE.NAME: "$(FormatAsLink 'Natural Wild Farm Tile' $id:EcoFriendlyWildFarmTile)"
+0.ECOFRIENDLYWILDFARMTILE.DESC: Grows one crop.
+0.ECOFRIENDLYWILDFARMTILE.EFFECT: "Can be used as a floor tile and rotated before construction, grows and is harvested in a Wild state."
+0.ECOFRIENDLYWILDFLOWERPOT.NAME: "$(FormatAsLink 'Natural Flower Pot' $id:EcoFriendlyWildFlowerPot)"
+0.ECOFRIENDLYWILDFLOWERPOT.DESC: Plants one plant when a seed is sown.
+0.ECOFRIENDLYWILDFLOWERPOT.EFFECT: "Increases Decor and contributes to Morale, grows in a Wild state."
+0.ECOFRIENDLYWILDHANGINGPOT.NAME: "$(FormatAsLink 'Natural Hanging Pot' $id:EcoFriendlyWildHangingPot)"
+0.ECOFRIENDLYWILDHANGINGPOT.DESC: Plants one plant when a seed is sown.
+0.ECOFRIENDLYWILDHANGINGPOT.EFFECT: |-
+  Increases Decor and contributes to Morale, grows in a Wild state.
+  Must be hung from the ceiling.

@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>FastWirelessAutomation</RootNamespace>
+  </PropertyGroup>
+  
+  <Import Project="$(LazyDirectoryBuild)"/>
+</Project>

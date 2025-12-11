@@ -1,0 +1,36 @@
+0.EASYELECTROLYZER.NAME: "$(FormatAsLink '強化型電解槽 2.0' $id:EasyElectrolyzer)"
+0.EASYELECTROLYZER.DESC: この機械は生成された水素を配管を通して送り出します。
+0.EASYELECTROLYZER.EFFECT: 改造された電解槽
+0.TWOINONEGRILL.NAME: "$(FormatAsLink '2 in 1 電気グリル' $id:TwoInOneGrill)"
+0.TWOINONEGRILL.DESC: 冷蔵庫と電気グリルの役割を同時に果たします。
+0.TWOINONEGRILL.EFFECT: 冷蔵庫 + 電気グリル
+0.WASTEWATERSTERILIZER.NAME: "$(FormatAsLink '廃水殺菌機' $id:WastewaterSterilizer)"
+0.WASTEWATERSTERILIZER.DESC: "汚染された水に存在する全ての細菌を殺し、超微細フィルターを通してきれいな水を排出します。"
+0.WASTEWATERSTERILIZER.EFFECT: 細菌を撲滅する未知の強力な技術
+0.MAGICTILE.NAME: "$(FormatAsLink 'マ・ジックタイル' $id:MagicTile)"
+0.MAGICTILE.DESC: "未知の技術を使用して、液体は透過するが気体は透過できないように作られたタイルです。"
+0.MAGICTILE.EFFECT: "液体は透過しますが、気体の流れは遮断します"
+0.ORGANICDEOXIDIZER.NAME: "$(FormatAsLink 'ミネラル分解酸素拡散器' $id:OrganicDeoxidizer)"
+0.ORGANICDEOXIDIZER.DESC: "土壌中に存在する微生物にエネルギーを与え、少量の酸素を取り出します。"
+0.ORGANICDEOXIDIZER.EFFECT: 土を非効率的に酸素に変換します
+0.H2OSYNTHESIZER.NAME: "$(FormatAsLink '水合成器' $id:H2OSynthesizer)"
+0.H2OSYNTHESIZER.DESC: $(FormatAsLink '水素' 'HYDROGEN')と $(FormatAsLink '酸素' 'OXYGEN')から $(FormatAsLink '水' 'WATER')を合成します。
+0.H2OSYNTHESIZER.EFFECT: 未知の技術で水を合成します
+0.CO2DECOMPOSEREZ.NAME: "$(FormatAsLink '二酸化炭素分解機' $id:CO2DecomposerEZ)"
+0.CO2DECOMPOSEREZ.DESC: $(FormatAsLink '二酸化炭素' 'CARBONDIOXIDE')を $(FormatAsLink '酸素' 'OXYGEN')と $(FormatAsLink '炭素' 'CARBON')に分解します
+0.CO2DECOMPOSEREZ.EFFECT: 未知の技術で二酸化炭素を分解します
+3.BASIC_SUPERSUIT.NAME: "$(FormatAsLink 'スーパースーツ' $id:Basic_SuperSuit)"
+3.BASIC_SUPERSUIT.DESC: このスーツは、見ているだけで気分が良くなります。
+3.BASIC_SUPERSUIT.EFFECT: 周囲の装飾値を大幅に増加させます。
+3.ADVANCE_SUPERSUIT.NAME: "$(FormatAsLink '伝説のスーパースーツ' $id:Advance_SuperSuit)"
+3.ADVANCE_SUPERSUIT.DESC: このスーツは、ある熟練したデザイナーの手によって生み出されたと言われる特別なスーツです。
+3.ADVANCE_SUPERSUIT.EFFECT: 周囲の装飾値を最高レベルに増加させます。
+3.SMALLBACKPACK.NAME: "$(FormatAsLink '粗末な小さなバックパック' $id:SmallBackpack)"
+3.SMALLBACKPACK.DESC: もう少し多く運搬できるようになります。
+3.SMALLBACKPACK.EFFECT: "粗末ですが、使えるバックパックです。"
+3.MEDIUMBACKPACK.NAME: "$(FormatAsLink 'モダンな大きなバックパック' $id:MediumBackpack)"
+3.MEDIUMBACKPACK.DESC: "小さなバックパックより多く運搬できるようになりますが、技術的な限界により移動速度がわずかに減少します。"
+3.MEDIUMBACKPACK.EFFECT: 丈夫なバックパックをお探しですか？これをよくご覧ください。
+3.LARGEBACKPACK.NAME: "$(FormatAsLink '伝説のスーパーバックパック' $id:LargeBackpack)"
+3.LARGEBACKPACK.DESC: "より効率的に、驚くほど多くの重量を追加で運搬できるようになります。"
+3.LARGEBACKPACK.EFFECT: 未来の技術で作られた伝説のバックパックを使ってみてください。

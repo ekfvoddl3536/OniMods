@@ -1,0 +1,36 @@
+0.EASYELECTROLYZER.NAME: "$(FormatAsLink '增强型电解槽 2.0' $id:EasyElectrolyzer)"
+0.EASYELECTROLYZER.DESC: 该机器将生成的氢气通过管道排出。
+0.EASYELECTROLYZER.EFFECT: 经过改造的电解槽
+0.TWOINONEGRILL.NAME: "$(FormatAsLink '二合一电烤架' $id:TwoInOneGrill)"
+0.TWOINONEGRILL.DESC: 同时具备冰箱和电烤架的功能。
+0.TWOINONEGRILL.EFFECT: 冰箱 + 电烤架
+0.WASTEWATERSTERILIZER.NAME: "$(FormatAsLink '废水杀菌器' $id:WastewaterSterilizer)"
+0.WASTEWATERSTERILIZER.DESC: "杀死污染水中存在的所有细菌，经过超细过滤器后排出干净的水。"
+0.WASTEWATERSTERILIZER.EFFECT: 能够消灭细菌的未知强大技术
+0.MAGICTILE.NAME: "$(FormatAsLink '魔-力瓷砖' $id:MagicTile)"
+0.MAGICTILE.DESC: "使用未知技术制造的瓷砖，液体可以穿透，但气体不能穿透。"
+0.MAGICTILE.EFFECT: "液体可穿透，但阻挡气体流动"
+0.ORGANICDEOXIDIZER.NAME: "$(FormatAsLink '矿物分解氧气扩散器' $id:OrganicDeoxidizer)"
+0.ORGANICDEOXIDIZER.DESC: "为土壤中的微生物提供能量，并获取少量氧气。"
+0.ORGANICDEOXIDIZER.EFFECT: 低效率地将泥土转化为氧气
+0.H2OSYNTHESIZER.NAME: "$(FormatAsLink '水合成器' $id:H2OSynthesizer)"
+0.H2OSYNTHESIZER.DESC: 用 $(FormatAsLink '氢气' 'HYDROGEN')和 $(FormatAsLink '氧气' 'OXYGEN')合成 $(FormatAsLink '水' 'WATER')。
+0.H2OSYNTHESIZER.EFFECT: 用未知技术合成水
+0.CO2DECOMPOSEREZ.NAME: "$(FormatAsLink '二氧化碳分解机' $id:CO2DecomposerEZ)"
+0.CO2DECOMPOSEREZ.DESC: 将 $(FormatAsLink '二氧化碳' 'CARBONDIOXIDE')分解为 $(FormatAsLink '氧气' 'OXYGEN')和 $(FormatAsLink '碳' 'CARBON')
+0.CO2DECOMPOSEREZ.EFFECT: 用未知技术分解二氧化碳
+3.BASIC_SUPERSUIT.NAME: "$(FormatAsLink '超级套装' $id:Basic_SuperSuit)"
+3.BASIC_SUPERSUIT.DESC: 仅仅看着这套西装就能让人心情愉悦。
+3.BASIC_SUPERSUIT.EFFECT: 大幅增加周围的装饰值。
+3.ADVANCE_SUPERSUIT.NAME: "$(FormatAsLink '传奇超级套装' $id:Advance_SuperSuit)"
+3.ADVANCE_SUPERSUIT.DESC: 这是一套据说出自一位经验丰富设计师之手的特殊套装。
+3.ADVANCE_SUPERSUIT.EFFECT: 将周围的装饰值提高到最高水平。
+3.SMALLBACKPACK.NAME: "$(FormatAsLink '简陋的小背包' $id:SmallBackpack)"
+3.SMALLBACKPACK.DESC: 可以运载更多一点的物品。
+3.SMALLBACKPACK.EFFECT: "简陋但实用的背包。"
+3.MEDIUMBACKPACK.NAME: "$(FormatAsLink '现代大型背包' $id:MediumBackpack)"
+3.MEDIUMBACKPACK.DESC: "可以比小背包运载更多的物品，但由于技术限制，移动速度会略微降低。"
+3.MEDIUMBACKPACK.EFFECT: 正在寻找坚固的背包吗？仔细看看这款。
+3.LARGEBACKPACK.NAME: "$(FormatAsLink '传奇超级背包' $id:LargeBackpack)"
+3.LARGEBACKPACK.DESC: "能够更有效地额外运载惊人数量的重量。"
+3.LARGEBACKPACK.EFFECT: 试用未来技术制造的传奇背包。
