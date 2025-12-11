@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EcoFriendlyToilet</RootNamespace>
+  </PropertyGroup>
+  
+  <Import Project="$(LazyDirectoryBuild)"/>
+  
+</Project>

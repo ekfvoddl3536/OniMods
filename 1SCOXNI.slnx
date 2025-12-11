@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/0SuperComicLib.ModONI/0SuperComicLib.ModONI.csproj" />
+    <Project Path="src/AdvancedGenerators_OV3/AdvancedGenerators_OV3.csproj" />
+    <Project Path="src/EcoFriendlyToilet_OV3/EcoFriendlyToilet_OV3.csproj" />
+    <Project Path="src/FastWirelessAutomation_OV3/FastWirelessAutomation_OV3.csproj" />
+    <Project Path="src/SupportPackage_OV3/SupportPackage_OV3.csproj" />
+  </Folder>
+  <Folder Name="/views/">
+    <Project Path="src/1SCLocStringManager_OV3/1SCLocStringManager_OV3.csproj" />
+  </Folder>
+</Solution>

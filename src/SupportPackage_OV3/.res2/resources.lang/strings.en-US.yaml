@@ -1,0 +1,36 @@
+0.EASYELECTROLYZER.NAME: "$(FormatAsLink 'Enhanced Electrolyzer 2.0' $id:EasyElectrolyzer)"
+0.EASYELECTROLYZER.DESC: This machine sends the produced hydrogen through pipes.
+0.EASYELECTROLYZER.EFFECT: Modified Electrolyzer
+0.TWOINONEGRILL.NAME: "$(FormatAsLink '2 in 1 Electric Grill' $id:TwoInOneGrill)"
+0.TWOINONEGRILL.DESC: Performs the roles of both a refrigerator and an electric grill simultaneously.
+0.TWOINONEGRILL.EFFECT: Refrigerator + Electric Grill
+0.WASTEWATERSTERILIZER.NAME: "$(FormatAsLink 'Wastewater Sterilizer' $id:WastewaterSterilizer)"
+0.WASTEWATERSTERILIZER.DESC: "Kills all germs present in contaminated water and discharges clean water after passing it through an ultrafine filter."
+0.WASTEWATERSTERILIZER.EFFECT: Unknown powerful technology that eradicates germs
+0.MAGICTILE.NAME: "$(FormatAsLink 'Mag-ic Tile' $id:MagicTile)"
+0.MAGICTILE.DESC: "A tile made using unknown technology that allows liquid to pass through but blocks gas."
+0.MAGICTILE.EFFECT: "Allows liquid to pass through, but blocks gas flow"
+0.ORGANICDEOXIDIZER.NAME: "$(FormatAsLink 'Mineral Decomposition Oxygen Diffuser' $id:OrganicDeoxidizer)"
+0.ORGANICDEOXIDIZER.DESC: "Provides energy to microorganisms in the soil and obtains a small amount of oxygen."
+0.ORGANICDEOXIDIZER.EFFECT: Inefficiently converts dirt into oxygen
+0.H2OSYNTHESIZER.NAME: "$(FormatAsLink 'Water Synthesizer' $id:H2OSynthesizer)"
+0.H2OSYNTHESIZER.DESC: Synthesizes $(FormatAsLink 'Water' 'WATER') from $(FormatAsLink 'Hydrogen' 'HYDROGEN') and $(FormatAsLink 'Oxygen' 'OXYGEN').
+0.H2OSYNTHESIZER.EFFECT: Synthesizes water with unknown technology
+0.CO2DECOMPOSEREZ.NAME: "$(FormatAsLink 'Carbon Dioxide Decomposer' $id:CO2DecomposerEZ)"
+0.CO2DECOMPOSEREZ.DESC: Decomposes $(FormatAsLink 'Carbon Dioxide' 'CARBONDIOXIDE') into $(FormatAsLink 'Oxygen' 'OXYGEN') and $(FormatAsLink 'Carbon' 'CARBON')
+0.CO2DECOMPOSEREZ.EFFECT: Decomposes carbon dioxide with unknown technology
+3.BASIC_SUPERSUIT.NAME: "$(FormatAsLink 'Super Suit' $id:Basic_SuperSuit)"
+3.BASIC_SUPERSUIT.DESC: Just looking at this suit makes you feel good.
+3.BASIC_SUPERSUIT.EFFECT: Greatly increases the Decor value of the surroundings.
+3.ADVANCE_SUPERSUIT.NAME: "$(FormatAsLink 'Legendary Super Suit' $id:Advance_SuperSuit)"
+3.ADVANCE_SUPERSUIT.DESC: This is a special suit said to have been born from the hands of a seasoned designer.
+3.ADVANCE_SUPERSUIT.EFFECT: Increases the Decor value of the surroundings to the highest level.
+3.SMALLBACKPACK.NAME: "$(FormatAsLink 'Crude Small Backpack' $id:SmallBackpack)"
+3.SMALLBACKPACK.DESC: Allows you to carry a little more.
+3.SMALLBACKPACK.EFFECT: "Crude, but useful backpack."
+3.MEDIUMBACKPACK.NAME: "$(FormatAsLink 'Modern Large Backpack' $id:MediumBackpack)"
+3.MEDIUMBACKPACK.DESC: "Allows you to carry more than a small backpack, but due to technical limitations, movement speed is slightly reduced."
+3.MEDIUMBACKPACK.EFFECT: Looking for a sturdy backpack? Take a close look at this one.
+3.LARGEBACKPACK.NAME: "$(FormatAsLink 'Legendary Super Backpack' $id:LargeBackpack)"
+3.LARGEBACKPACK.DESC: "Allows you to carry an incredibly large amount of additional weight more efficiently."
+3.LARGEBACKPACK.EFFECT: Try using a legendary backpack made with future technology.

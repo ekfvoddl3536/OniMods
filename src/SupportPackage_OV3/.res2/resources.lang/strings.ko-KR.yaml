@@ -1,0 +1,66 @@
+0.EASYELECTROLYZER.NAME: "$(FormatAsLink '향상된 전해조 2.0' $id:EasyElectrolyzer)"
+0.EASYELECTROLYZER.DESC: 이 기계는 만들어진 수소를 배관으로 내보냅니다.
+0.EASYELECTROLYZER.EFFECT: 개조된 전해조
+0.TWOINONEGRILL.NAME: "$(FormatAsLink '2 in 1 전기 그릴' $id:TwoInOneGrill)"
+0.TWOINONEGRILL.DESC: 냉장고와 전기 그릴의 역할을 동시에 수행합니다.
+0.TWOINONEGRILL.EFFECT: 냉장고 + 전기 그릴
+0.WASTEWATERSTERILIZER.NAME: "$(FormatAsLink '폐수 살균기' $id:WastewaterSterilizer)"
+0.WASTEWATERSTERILIZER.DESC: "오염된 물에 존재하는 모든 세균을 죽이고, 초미세 필터를 거쳐 깨끗한 물을 배출합니다."
+0.WASTEWATERSTERILIZER.EFFECT: 세균을 박멸하는 미지의 강력한 기술
+0.MAGICTILE.NAME: "$(FormatAsLink '매-직 타일' $id:MagicTile)"
+0.MAGICTILE.DESC: "미지의 기술을 사용하여, 액체는 투과하지만 기체는 투과하지 못하게 만든 타일입니다."
+0.MAGICTILE.EFFECT: "액체는 투과하지만, 기체 흐름은 차단합니다"
+0.ORGANICDEOXIDIZER.NAME: "$(FormatAsLink '미네랄 분해 산소 확산기' $id:OrganicDeoxidizer)"
+0.ORGANICDEOXIDIZER.DESC: "흙 속에 존재하는 미생물에게 에너지를 제공하고, 약간의 산소를 얻어냅니다."
+0.ORGANICDEOXIDIZER.EFFECT: 흙을 비효율적으로 산소로 변환합니다
+0.H2OSYNTHESIZER.NAME: "$(FormatAsLink '물 합성기' $id:H2OSynthesizer)"
+0.H2OSYNTHESIZER.DESC: "$(FormatAsLink '수소' 'HYDROGEN')와 $(FormatAsLink '산소' 'OXYGEN')로 $(FormatAsLink '물' 'WATER')을 합성합니다."
+0.H2OSYNTHESIZER.EFFECT: 미지의 기술로 물을 합성합니다
+0.CO2DECOMPOSEREZ.NAME: "$(FormatAsLink '이산화 탄소 분해기' $id:CO2DecomposerEZ)"
+0.CO2DECOMPOSEREZ.DESC: "$(FormatAsLink '이산화 탄소' 'CARBONDIOXIDE')를 $(FormatAsLink '산소' 'OXYGEN')와 $(FormatAsLink '석탄' 'CARBON')로 분해합니다"
+0.CO2DECOMPOSEREZ.EFFECT: 미지의 기술로 이산화 탄소를 분해합니다
+3.BASIC_SUPERSUIT.NAME: "$(FormatAsLink '슈퍼 슈트' $id:Basic_SuperSuit)"
+3.BASIC_SUPERSUIT.DESC: 이 슈트는 쳐다보기만 해도 기분이 좋아집니다.
+3.BASIC_SUPERSUIT.EFFECT: 주변의 장식 수치를 크게 증가시킵니다.
+3.ADVANCE_SUPERSUIT.NAME: "$(FormatAsLink '전설적인 슈퍼 슈트' $id:Advance_SuperSuit)"
+3.ADVANCE_SUPERSUIT.DESC: 이 슈트는 어느 노련한 디자이너의 손에서 탄생했다고 전해지는 특별한 슈트입니다.
+3.ADVANCE_SUPERSUIT.EFFECT: 주변의 장식 수치를 최고 수준으로 증가시킵니다.
+3.SMALLBACKPACK.NAME: "$(FormatAsLink '조잡한 작은 배낭' $id:SmallBackpack)"
+3.SMALLBACKPACK.DESC: 조금 더 많이 운반할 수 있게됩니다.
+3.SMALLBACKPACK.EFFECT: "조잡하지만, 쓸만한 배낭입니다."
+3.MEDIUMBACKPACK.NAME: "$(FormatAsLink '현대적인 큰 배낭' $id:MediumBackpack)"
+3.MEDIUMBACKPACK.DESC: "작은 배낭보다 더 많이 운반할 수 있게되지만, 기술적인 한계로 이동 속도가 약간 감소합니다."
+3.MEDIUMBACKPACK.EFFECT: 튼튼한 배낭을 찾습니까? 이 배낭을 유심히 살펴보십시오.
+3.LARGEBACKPACK.NAME: "$(FormatAsLink '전설적인 슈퍼 배낭' $id:LargeBackpack)"
+3.LARGEBACKPACK.DESC: "더 효율적으로, 엄청나게 많은 무게를 추가적으로 운반할 수 있게됩니다."
+3.LARGEBACKPACK.EFFECT: 미래의 기술로 만들어진 전설적인 배낭을 사용해보세요.
+# -- BEGIN COMMENT --
+#   From here on out, this is text about private features that are not included in the actual release distribution. 
+#   Therefore, the key:value pairs below this are the Korean default text that I use for testing, 
+#   so they will not be included in the actual Steam Workshop distribution version. 
+#   Therefore, you can delete everything up to the line before 
+#   -- END COMMENT --
+0.EASYGLASSFORGE.NAME: "$(FormatAsLink '신비한 물질 제조소' $id:EasyGlassForge)"
+0.EASYGLASSFORGE.DESC: 다양한 물질을 아무 비용 없이 제조합니다.
+0.EASYGLASSFORGE.EFFECT: 미지의 기술로 만들어진 신비한 물질 제조소
+0.SOLARLIQUIDHEATER.NAME: "$(FormatAsLink '태양열 액체 가열기' $id:SolarLiquidHeater)"
+0.SOLARLIQUIDHEATER.DESC: 액체 가열기. 너무 높은 온도는 기체로 만들수 있습니다.
+0.SOLARLIQUIDHEATER.EFFECT: 태양열을 사용한 무료 가열기
+1.SOLARLIQUIDHEATER.SLIDER_TITLE: 목표 온도
+1.SOLARLIQUIDHEATER.SLIDER_TOOLTIP: 액체의 목표 온도입니다.
+0.GERMSLAUGHTEREXECUTOR.NAME: "$(FormatAsLink '고성능 지역 멸균기' $id:GermSlaughterExecutor)"
+0.GERMSLAUGHTEREXECUTOR.DESC: "일정한 범위 내 모든 고체, 액체, 기체 자원에서 세균을 절멸시킵니다."
+0.GERMSLAUGHTEREXECUTOR.EFFECT: 멸균
+0.EASYOILWELLCAP.NAME: "$(FormatAsLink '쉬운 유정' $id:EasyOilWellCap)"
+0.EASYOILWELLCAP.DESC: "파이프로 천연가스를 배출하고, 열을 발생시키지 않음"
+0.EASYOILWELLCAP.EFFECT: 유정
+0.LAVAMURDER.NAME: "$(FormatAsLink '지역 마그마 제거기' $id:LavaMurder)"
+0.LAVAMURDER.DESC: 마그마를 죽여버리는 기계
+0.LAVAMURDER.EFFECT: 마그마 제거
+0.LIQUIDCOPIER.NAME: "$(FormatAsLink '액체 복사기' $id:LiquidCopier)"
+0.LIQUIDCOPIER.DESC: 액체를 미지의 기술로 복사하는 장치
+0.LIQUIDCOPIER.EFFECT: 무한 액체 공급기
+0.GASCOPIER.NAME: "$(FormatAsLink '기체 복사기' $id:GasCopier)"
+0.GASCOPIER.DESC: 기체를 미지의 기술로 복사하는 장치
+0.GASCOPIER.EFFECT: 무한 기체 공급기
+# -- END COMMENT --

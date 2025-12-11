@@ -1,0 +1,24 @@
+0.REFINEDCARBONGENERATOR.NAME: "$(FormatAsLink 'Refined Carbon Generator' $id:RefinedCarbonGenerator)"
+0.REFINEDCARBONGENERATOR.DESC: Produces more electricity than the $(FormatAsLink 'Coal' 'COAL') Generator.
+0.REFINEDCARBONGENERATOR.EFFECT: "Burns refined carbon and produces a large amount of electricity."
+0.THERMOELECTRICGENERATOR.NAME: "$(FormatAsLink 'Thermoelectric Generator' $id:ThermoelectricGenerator)"
+0.THERMOELECTRICGENERATOR.DESC: "Removes $(Get-String $var:ThermoelectricGeneratorHeat)kDTU of heat per second."
+0.THERMOELECTRICGENERATOR.EFFECT: Removes heat and produces electricity.
+0.NAPHTHAGENERATOR.NAME: "$(FormatAsLink 'Naphtha Generator' $id:NaphthaGenerator)"
+0.NAPHTHAGENERATOR.DESC: Produces electricity and $(FormatAsLink 'Carbon Dioxide' 'CARBONDIOXIDE') using $(FormatAsLink 'Naphtha' 'NAPHTHA') and $(FormatAsLink 'Oxygen' 'OXYGEN').
+0.NAPHTHAGENERATOR.EFFECT: "Requires oxygen in addition to fuel, and uses Naphtha as fuel."
+0.ECOFRIENDLYMETHANEGENERATOR.NAME: "$(FormatAsLink 'Eco-Friendly Methane Generator' $id:EcoFriendlyMethaneGenerator)"
+0.ECOFRIENDLYMETHANEGENERATOR.DESC: Produces electricity, $(FormatAsLink 'Carbon Dioxide' 'CARBONDIOXIDE'), and $(FormatAsLink 'Water' 'WATER') using $(FormatAsLink 'Methane' 'METHANE'), $(FormatAsLink 'Oxygen' 'OXYGEN'), and filtration media.
+0.ECOFRIENDLYMETHANEGENERATOR.EFFECT: "Requires oxygen and filtration media in addition to fuel, and does not discharge polluted water."
+0.FUSIONPOWERPLANT.NAME: "$(FormatAsLink 'Fusion Power Plant' $id:FusionPowerPlant)"
+0.FUSIONPOWERPLANT.DESC: Consumes $(FormatAsLink 'Liquid Hydrogen' 'LIQUIDHYDROGEN') to produce $(FormatAsLink 'Helium' 'HELIUM') and a large amount of $(FormatAsLink 'Power' 'POWER').
+0.FUSIONPOWERPLANT.EFFECT: The energy of dreams
+0.THERMOCONVERTGENERATOR.NAME: "$(FormatAsLink 'Liquid Energy Absorption Generator' $id:ThermoconvertGenerator)"
+0.THERMOCONVERTGENERATOR.DESC: |-
+  Absorbs the thermal energy contained in liquid to produce power.
+  Power production can be adjusted by controlling the amount of energy to absorb.
+0.THERMOCONVERTGENERATOR.EFFECT: Energy absorbed once is never returned!
+1.SUPERCOMIC_THERMOCONVERT_GEN.TITLE: Amount of Energy to Convert
+1.SUPERCOMIC_THERMOCONVERT_GEN.TOOLTIP: "Increasing this value increases power production by absorbing more heat from the input material."
+2.THERMOCONVERTGENERATORWATTAGE.NAME: "Wattage: {Wattage}"
+2.THERMOCONVERTGENERATORWATTAGE.TOOLTIP: "This generator is producing $(FormatAsPositiveRate '{Wattage}') of $(FormatAsKeyWord 'Power')."

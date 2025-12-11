@@ -1,0 +1,66 @@
+<Project>
+  
+  <PropertyGroup>
+    <!-- 타겟 실행 순서를 조정 -->
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      ShippingDeploy
+    </BuildDependsOn>
+  </PropertyGroup>
+  
+  <!-- 출력물 및 리소스 복사 자동화 -->
+  <!-- ShippingDeployOnBuild가 허용되어 있을 때에만 타겟을 실행 -->
+  <Target Name="ShippingDeploy" Condition="'$(ShippingDeployOnBuild)'=='true'">
+    <PropertyGroup>
+      <!-- 배포할 목적지 폴더와 프로젝트의 리소스 폴더를 지정 -->
+      <_DestinationModDirectory>$(PrivateModsDirectory)Dev/$(ProjectName)/</_DestinationModDirectory>
+      <_SourceResourceDirectory>$(ProjectDir).res2/</_SourceResourceDirectory>
+      
+      <!-- 경로 검사용 Exists 호출 압박을 줄이기위해 상수로 변환 -->
+      <_SourceResourceDirectoryExists>false</_SourceResourceDirectoryExists>
+      <_SourceResourceDirectoryExists Condition="Exists('$(_SourceResourceDirectory)')">true</_SourceResourceDirectoryExists>
+    </PropertyGroup>
+    
+    <!-- text output -->
+    <Message Text="=== Shipping Deploy Started [$(ProjectName)] ===" Importance="High" />
+    
+    <!-- if UserCleanDeploy is true, remove destination directory -->
+    <RemoveDir Directories="$(_DestinationModDirectory)" Condition="'$(UserCleanDeploy)'=='true'" />
+    
+    <ItemGroup Condition="'$(_SourceResourceDirectoryExists)'=='true'">
+      <!-- 프로젝트의 리소스 폴더의 계층 구조를 유지하며 모두 선택 -->
+      <_TempPrivateResx Include="$(_SourceResourceDirectory)/**/*" />
+      
+      <!-- 솔루션 레벨 공통 배포 포함 디렉토리의 계층 구조를 유지하면 모두 선택 -->
+      <_TempPublicResx Include="$(SharedResourceDirectory)/**/*" />
+      
+      <!-- 빌드 출력물 폴더의 계층 구조를 유지하며, 모든 파일을 선택하되 .deps.json 및 .pdb는 제외함 -->
+      <_TempArtifacts 
+        Include="$(OutputPath)/**/*" 
+        Exclude="$(OutputPath)/**/*.deps.json;$(OutputPath)/**/*.pdb" />
+    </ItemGroup>
+    
+    <!-- 프로젝트의 리소스 폴더를 배포 폴더로 복사 -->
+    <Copy
+      Condition="'$(_SourceResourceDirectoryExists)'=='true'"
+      SkipUnchangedFiles="true"
+      SourceFiles="@(_TempPrivateResx)"
+      DestinationFolder="$(_DestinationModDirectory)/%(RecursiveDir)" />
+    
+    <!-- 솔루션 레벨 공통 배포 포함 내용물을 배포 폴더로 복사 -->
+    <Copy
+      SkipUnchangedFiles="true"
+      SourceFiles="@(_TempPublicResx)" 
+      DestinationFolder="$(_DestinationModDirectory)/%(RecursiveDir)" />
+    
+    <!-- 프로젝트의 빌드 출력물들을 배포 폴더로 복사 -->
+    <Copy
+      SkipUnchangedFiles="true"
+      SourceFiles="@(_TempArtifacts)"
+      DestinationFolder="$(_DestinationModDirectory)/%(RecursiveDir)" />
+    
+    <!-- Complete -->
+    <Message Text="=== Completed [$(ProjectName)] ===" Importance="High" />
+  </Target>
+  
+</Project>

@@ -1,0 +1,24 @@
+0.REFINEDCARBONGENERATOR.NAME: "$(FormatAsLink '精製炭素発電機' $id:RefinedCarbonGenerator)"
+0.REFINEDCARBONGENERATOR.DESC: "$(FormatAsLink '石炭' 'COAL')発電機よりも多くの電力を生産します。"
+0.REFINEDCARBONGENERATOR.EFFECT: "精製炭素を燃焼し、大量の電力を生産します。"
+0.THERMOELECTRICGENERATOR.NAME: "$(FormatAsLink '熱電発電機' $id:ThermoelectricGenerator)"
+0.THERMOELECTRICGENERATOR.DESC: "毎秒 $(Get-String $var:ThermoelectricGeneratorHeat)kDTUの熱を除去します。"
+0.THERMOELECTRICGENERATOR.EFFECT: 熱を除去し、電力を生産します。
+0.NAPHTHAGENERATOR.NAME: "$(FormatAsLink 'ナフサ発電機' $id:NaphthaGenerator)"
+0.NAPHTHAGENERATOR.DESC: "$(FormatAsLink 'ナフサ' 'NAPHTHA')と $(FormatAsLink '酸素' 'OXYGEN')を利用して電気と $(FormatAsLink '二酸化炭素' 'CARBONDIOXIDE')を生産します。"
+0.NAPHTHAGENERATOR.EFFECT: "燃料の他に酸素を必要とし、ナフサを燃料とします。"
+0.ECOFRIENDLYMETHANEGENERATOR.NAME: "$(FormatAsLink '環境に優しい天然ガス発電機' $id:EcoFriendlyMethaneGenerator)"
+0.ECOFRIENDLYMETHANEGENERATOR.DESC: "$(FormatAsLink '天然ガス' 'METHANE')と $(FormatAsLink '酸素' 'OXYGEN')、ろ過媒体を利用して電気と $(FormatAsLink '二酸化炭素' 'CARBONDIOXIDE')および $(FormatAsLink '水' 'WATER')を生産します。"
+0.ECOFRIENDLYMETHANEGENERATOR.EFFECT: "燃料の他に酸素とろ過媒体を必要とし、汚染水を排出しません。"
+0.FUSIONPOWERPLANT.NAME: "$(FormatAsLink '核融合炉' $id:FusionPowerPlant)"
+0.FUSIONPOWERPLANT.DESC: "$(FormatAsLink '液体水素' 'LIQUIDHYDROGEN')を消費して $(FormatAsLink 'ヘリウム' 'HELIUM')と大量の $(FormatAsLink '電力' 'POWER')を生産します。"
+0.FUSIONPOWERPLANT.EFFECT: 夢のエネルギー
+0.THERMOCONVERTGENERATOR.NAME: "$(FormatAsLink '液体エネルギー吸収発電機' $id:ThermoconvertGenerator)"
+0.THERMOCONVERTGENERATOR.DESC: |-
+  液体が持つ熱エネルギーを吸収して、電力を生産します。
+  吸収するエネルギー量を調節して電力生産量を調節できます。
+0.THERMOCONVERTGENERATOR.EFFECT: 一度吸収したエネルギーは二度と戻りません！
+1.SUPERCOMIC_THERMOCONVERT_GEN.TITLE: 変換するエネルギー量
+1.SUPERCOMIC_THERMOCONVERT_GEN.TOOLTIP: "この値を上げると、入力された物質の熱をより多く吸収し、電力生産量を高めます。"
+2.THERMOCONVERTGENERATORWATTAGE.NAME: "ワット数: {Wattage}"
+2.THERMOCONVERTGENERATORWATTAGE.TOOLTIP: "この発電機は $(FormatAsPositiveRate '{Wattage}')の $(FormatAsKeyWord '電力')を生産しています。"

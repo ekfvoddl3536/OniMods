@@ -1,0 +1,24 @@
+0.REFINEDCARBONGENERATOR.NAME: "$(FormatAsLink '정제 탄소 발전기' $id:RefinedCarbonGenerator)"
+0.REFINEDCARBONGENERATOR.DESC: "$(FormatAsLink '석탄' 'COAL') 발전기보다 더 많은 전기를 생산합니다."
+0.REFINEDCARBONGENERATOR.EFFECT: "정제 탄소를 연소하고, 많은 전기를 생산합니다."
+0.THERMOELECTRICGENERATOR.NAME: "$(FormatAsLink '열전기 발전기' $id:ThermoelectricGenerator)"
+0.THERMOELECTRICGENERATOR.DESC: "초당 $(Get-String $var:ThermoelectricGeneratorHeat)kDTU의 열을 제거합니다."
+0.THERMOELECTRICGENERATOR.EFFECT: 열을 제거하고 전기를 생산합니다.
+0.NAPHTHAGENERATOR.NAME: "$(FormatAsLink '나프타 발전기' $id:NaphthaGenerator)"
+0.NAPHTHAGENERATOR.DESC: "$(FormatAsLink '나프타' 'NAPHTHA')와 $(FormatAsLink '산소' 'OXYGEN')을 이용해 전기와 $(FormatAsLink '이산화 탄소' 'CARBONDIOXIDE')를 생산합니다."
+0.NAPHTHAGENERATOR.EFFECT: "연료 외 산소를 필요로 하며, 나프타를 연료로 합니다."
+0.ECOFRIENDLYMETHANEGENERATOR.NAME: "$(FormatAsLink '친환경 천연가스 발전기' $id:EcoFriendlyMethaneGenerator)"
+0.ECOFRIENDLYMETHANEGENERATOR.DESC: "$(FormatAsLink '천연가스' 'METHANE')와 $(FormatAsLink '산소' 'OXYGEN'), 여과 매질을 이용해 전기와 $(FormatAsLink '이산화 탄소' 'CARBONDIOXIDE') 및 $(FormatAsLink '물' 'WATER')을 생산합니다."
+0.ECOFRIENDLYMETHANEGENERATOR.EFFECT: "연료 외 산소와 여과 매질을 필요로 하며, 오염된 물을 배출하지 않습니다."
+0.FUSIONPOWERPLANT.NAME: "$(FormatAsLink '핵융합로' $id:FusionPowerPlant)"
+0.FUSIONPOWERPLANT.DESC: "$(FormatAsLink '액화수소' 'LIQUIDHYDROGEN')를 소모하여 $(FormatAsLink '헬륨' 'HELIUM')과 대량의 $(FormatAsLink '전기' 'POWER')를 생산합니다."
+0.FUSIONPOWERPLANT.EFFECT: 꿈의 에너지
+0.THERMOCONVERTGENERATOR.NAME: "$(FormatAsLink '액체 에너지 흡수 발전기' $id:ThermoconvertGenerator)"
+0.THERMOCONVERTGENERATOR.DESC: |-
+  액체가 가지고 있는 열 에너지를 흡수하여, 전력을 생산합니다.
+  흡수할 에너지양을 조절하여 전력 생산량을 조절할 수 있습니다.
+0.THERMOCONVERTGENERATOR.EFFECT: 한 번 흡수한 에너지는 다시 돌려주지 않습니다!
+1.SUPERCOMIC_THERMOCONVERT_GEN.TITLE: 변환할 에너지양
+1.SUPERCOMIC_THERMOCONVERT_GEN.TOOLTIP: "이 값을 높이면, 입력된 물질의 열을 더 많이 흡수하여 전력 생산량을 높입니다."
+2.THERMOCONVERTGENERATORWATTAGE.NAME: "와트 수: {Wattage}"
+2.THERMOCONVERTGENERATORWATTAGE.TOOLTIP: "이 발전기는 $(FormatAsPositiveRate '{Wattage}')의 $(FormatAsKeyWord '전력')을 생산하고 있습니다."

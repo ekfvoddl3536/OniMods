@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SuperComicLib.ModONI.Configurations.Views</RootNamespace>
+    
+    <UseAdditionalLibraries>true</UseAdditionalLibraries>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <LibRef Include="Newtonsoft.Json" Private="false"/>
+    <LibRef Include="Unity.TextMeshPro" Private="false"/>
+    <LibRef Include="PLib"/>
+  
+    <Compile Remove="__OLD__/**/*" />
+  </ItemGroup>
+  
+  <Import Project="$(LazyDirectoryBuild)"/>
+  
+</Project>

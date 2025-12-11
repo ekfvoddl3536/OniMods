@@ -1,0 +1,43 @@
+<Project>
+  
+  <ItemDefinitionGroup>
+    <_TempOptionalRefs>
+      <Private>true</Private>
+      <SpecificVersion>true</SpecificVersion>
+    </_TempOptionalRefs>
+  </ItemDefinitionGroup>
+  
+  <ItemGroup Condition="'$(UseSharedLibraries)'=='true'">
+    <!-- Shared libraries reference -->
+    <_TempShareLib Include="$(SharedLibrariesDirectory)*.dll"/>
+    <Reference Include="@(_TempShareLib->'%(Identity)')">
+      <SpecificVersion Condition="'%(Filename)'=='System.Runtime.CompilerServices.Unsafe'">false</SpecificVersion>
+      <HintPath>%(Identity)</HintPath>
+      <Name>%(Filename)</Name>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(UseAdditionalLibraries)'=='true'">
+    <!-- Additional libraries -->
+    <_TempOptionalRefs Include="@(LibRef->Distinct()->'$(AdditionalLibrariesDirectory)%(Identity).dll')"/>
+    
+    <!-- Do references -->
+    <Reference Include="@(_TempOptionalRefs->'%(Identity)')">
+      <SpecificVersion>%(SpecificVersion)</SpecificVersion>
+      <Private>%(Private)</Private>
+      <HintPath>%(Identity)</HintPath>
+      <Name>%(Filename)</Name>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <!-- Project references -->
+    <ProjRef Include="$(LocalSharedSCLModONILibName)" Condition="'$(ImportSCLModONI)'=='true'"/>
+    <_TempProjectTargets Include="@(ProjRef->Distinct()->'$(LocalSourcesRoot)%(Identity)/%(Identity).csproj')"/>
+    
+    <!-- Do references -->
+    <ProjectReference Include="@(_TempProjectTargets->'%(Identity)')"/>
+  </ItemGroup>
+  
+</Project>

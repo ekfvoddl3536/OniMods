@@ -1,0 +1,24 @@
+0.REFINEDCARBONGENERATOR.NAME: "$(FormatAsLink '精炼碳发电机' $id:RefinedCarbonGenerator)"
+0.REFINEDCARBONGENERATOR.DESC: 比 $(FormatAsLink '煤炭' 'COAL')发电机生产更多的电力。
+0.REFINEDCARBONGENERATOR.EFFECT: "燃烧精炼碳，并生产大量电力。"
+0.THERMOELECTRICGENERATOR.NAME: "$(FormatAsLink '热电发电机' $id:ThermoelectricGenerator)"
+0.THERMOELECTRICGENERATOR.DESC: "每秒去除 $(Get-String $var:ThermoelectricGeneratorHeat)kDTU 的热量。"
+0.THERMOELECTRICGENERATOR.EFFECT: 去除热量并生产电力。
+0.NAPHTHAGENERATOR.NAME: "$(FormatAsLink '石脑油发电机' $id:NaphthaGenerator)"
+0.NAPHTHAGENERATOR.DESC: 利用 $(FormatAsLink '石脑油' 'NAPHTHA')和 $(FormatAsLink '氧气' 'OXYGEN')生产电力和 $(FormatAsLink '二氧化碳' 'CARBONDIOXIDE')。
+0.NAPHTHAGENERATOR.EFFECT: "除燃料外还需要氧气，以石脑油为燃料。"
+0.ECOFRIENDLYMETHANEGENERATOR.NAME: "$(FormatAsLink '环保天然气发电机' $id:EcoFriendlyMethaneGenerator)"
+0.ECOFRIENDLYMETHANEGENERATOR.DESC: 利用 $(FormatAsLink '天然气' 'METHANE')、$(FormatAsLink '氧气' 'OXYGEN')和过滤介质，生产电力、$(FormatAsLink '二氧化碳' 'CARBONDIOXIDE')以及 $(FormatAsLink '水' 'WATER')。
+0.ECOFRIENDLYMETHANEGENERATOR.EFFECT: "除燃料外还需要氧气和过滤介质，不排放污染水。"
+0.FUSIONPOWERPLANT.NAME: "$(FormatAsLink '核聚变反应堆' $id:FusionPowerPlant)"
+0.FUSIONPOWERPLANT.DESC: 消耗 $(FormatAsLink '液态氢' 'LIQUIDHYDROGEN')以生产 $(FormatAsLink '氦气' 'HELIUM')和大量 $(FormatAsLink '电力' 'POWER')。
+0.FUSIONPOWERPLANT.EFFECT: 梦想的能源
+0.THERMOCONVERTGENERATOR.NAME: "$(FormatAsLink '液体能量吸收发电机' $id:ThermoconvertGenerator)"
+0.THERMOCONVERTGENERATOR.DESC: |-
+  吸收液体所含的热能，生产电力。
+  可通过调节吸收的能量来控制电力生产量。
+0.THERMOCONVERTGENERATOR.EFFECT: 一旦吸收的能量不会再次返还！
+1.SUPERCOMIC_THERMOCONVERT_GEN.TITLE: 要转换的能量量
+1.SUPERCOMIC_THERMOCONVERT_GEN.TOOLTIP: "提高此值会吸收输入物质更多的热量，从而增加电力产量。"
+2.THERMOCONVERTGENERATORWATTAGE.NAME: "瓦特数: {Wattage}"
+2.THERMOCONVERTGENERATORWATTAGE.TOOLTIP: "此发电机正在生产 $(FormatAsPositiveRate '{Wattage}')的 $(FormatAsKeyWord '电力')。"

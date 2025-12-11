@@ -1,0 +1,89 @@
+<Project>
+    
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <OutputType>Library</OutputType>
+    
+    <Version>6.0.0</Version>
+    
+    <Authors>SuperComic(ekfvoddl3535@naver.com)</Authors>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ekfvoddl3536/OniMods</RepositoryUrl>
+    
+    <!-- No CLSCompliant and ComVisible -->
+    <CLSCompliant>false</CLSCompliant>
+    <ComVisible>false</ComVisible>
+    
+    <Platform>x64</Platform>
+    
+    <Nullable>annotations</Nullable>
+    
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    
+    <!-- Note: 'MSB3277' Required (for System.IO.Compression version mismatch warning) -->
+    <NoWarn>$(NoWarn);IDE0032;IDE0057;IDE0065;IDE0130;IDE0180;IDE0290;IDE1006;MSB3277</NoWarn>
+  </PropertyGroup>
+  
+  <!-- Local development environment quick reference properties -->
+  <PropertyGroup>
+    <LazyImportProjectName>Lazy.Directory.Build</LazyImportProjectName>
+    <LocalBuildToolsRoot>$(MSBuildThisFileDirectory)build/</LocalBuildToolsRoot>
+    
+    <LocalSourcesRoot>$(MSBuildThisFileDirectory)src/</LocalSourcesRoot>
+    <LocalSharedSCLModONILibName>0SuperComicLib.ModONI</LocalSharedSCLModONILibName>
+    
+    <LocalDevEnvRoot>$(MSBuildThisFileDirectory).ldenv/</LocalDevEnvRoot>
+    
+    <!-- Symbolic linked directories -->
+    <PrivateGameDirectory>$(LocalDevEnvRoot).gamedir/</PrivateGameDirectory>
+    <PrivateModsDirectory>$(LocalDevEnvRoot).modsdir/</PrivateModsDirectory>
+    <PrivateLogsDirectory>$(LocalDevEnvRoot).logsdir/</PrivateLogsDirectory>
+    
+    <!-- Local share, optional libraries directory -->
+    <SharedLibrariesDirectory>$(LocalDevEnvRoot)share/</SharedLibrariesDirectory>
+    <AdditionalLibrariesDirectory>$(LocalDevEnvRoot)lib/</AdditionalLibrariesDirectory>
+    
+    <!-- Solution level shared common public resources directory -->
+    <SharedResourceDirectory>$(LocalBuildToolsRoot).res.public/</SharedResourceDirectory>
+    
+    <!-- Default values -->
+    <!-- Determines whether to automatically deploy to the local mod folder `mods/Dev` when the project build is successful. -->
+    <ShippingDeployOnBuild>true</ShippingDeployOnBuild>
+    <!-- Whether to enable optional additional library references. -->
+    <UseAdditionalLibraries>false</UseAdditionalLibraries>
+    <!-- Whether to allow automatic references to solution scope shared libraries. -->
+    <UseSharedLibraries>true</UseSharedLibraries>
+    <!-- Whether to allow automatic references to the `0SuperComicLib.ModONI` project. -->
+    <ImportSCLModONI>true</ImportSCLModONI>
+    <!-- Whether to completely erase the destination folder where local deployment will be performed and then create a new one to perform a clean deployment. -->
+    <!--
+    <UserCleanDeploy>false</UserCleanDeploy> 
+    -->
+    
+    <!-- Quick Reference -->
+    <LazyDirectoryBuild>$(LocalBuildToolsRoot)$(LazyImportProjectName).props</LazyDirectoryBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- Global Usings -->
+    <Using Include="System.Diagnostics.CodeAnalysis"/>
+    <Using Include="System.Runtime.CompilerServices"/>
+    <Using Include="System.Runtime.InteropServices"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>testapp</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+  
+</Project>
